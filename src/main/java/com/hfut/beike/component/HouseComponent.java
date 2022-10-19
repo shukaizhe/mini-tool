@@ -42,7 +42,6 @@ public class HouseComponent implements PageProcessor {
         page.putField("price", price);
         page.putField("image", image);
         page.putField("result", result);
-
     }
 
     @Override
