@@ -41,6 +41,16 @@ public class HouseController extends ApiController {
     }
 
     /**
+     * 分页查询所有数据
+     * @return 所有数据
+     */
+    @GetMapping("/run")
+    public R run() {
+        this.houseService.spider();
+        return success("ok");
+    }
+
+    /**
      * 通过主键查询单条数据
      *
      * @param id 主键

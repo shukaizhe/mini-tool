@@ -11,5 +11,6 @@ import com.hfut.beike.entity.House;
  */
 public interface HouseService extends IService<House> {
 
+    void spider();
 }
 
