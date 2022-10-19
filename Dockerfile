@@ -18,6 +18,6 @@ RUN mvn -f /home/app/pom.xml clean package -DskipTests
 # 该镜像需要依赖的基础镜像
 FROM openjdk:11-jre-slim
 COPY --from=build /home/app/target/* /usr/local/lib/
-CMD ["java","-jar","/usr/local/lib/java-spring-boot-mongodb-starter-1.0.0.jar"]
+CMD ["java","-jar","/usr/local/lib/house-0.0.1-SNAPSHOT.jar"]
 EXPOSE 8080
 MAINTAINER yugan2023
