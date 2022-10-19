@@ -6,6 +6,6 @@ CMD 'mvn package'
 # 声明服务运行在8080端口
 EXPOSE 8080
 # 指定docker容器启动时运行jar包
-ENTRYPOINT ["java", "-jar","/usr/local/lib/house1-0.0.1-SNAPSHOT.jar"]
+#ENTRYPOINT ["java", "-jar","/usr/local/lib/house-0.0.1-SNAPSHOT.jar"]
 # 指定维护者的名字
 MAINTAINER yugan2023
