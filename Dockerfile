@@ -2,10 +2,10 @@
 FROM openjdk:8
 CMD 'mvn package'
 # 将当前目录下的jar包复制到docker容器的/目录下
-ADD ./target/house-0.0.1-SNAPSHOT.jar /house-0.0.1-SNAPSHOT.jar
+ADD ./target/house-0.0.1-SNAPSHOT.jar ./house-0.0.1-SNAPSHOT.jar
 # 声明服务运行在8080端口
 EXPOSE 8080
 # 指定docker容器启动时运行jar包
-ENTRYPOINT ["java", "-jar","/house-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar","./house-0.0.1-SNAPSHOT.jar"]
 # 指定维护者的名字
 MAINTAINER yugan2023
