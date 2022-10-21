@@ -11,11 +11,9 @@
 <!-- 你的 HTML 代码 -->
 <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div class="layui-container">
-        <div class="layui-row">
-            <div style="margin: 20px 20px auto" class="layui-col-md10">
-                <table id="demo" lay-filter="test"></table>
-            </div>
+    <div class="layui-row">
+        <div style="margin: 20px 20px auto" class="layui-col-md10">
+            <table id="demo" lay-filter="test"></table>
         </div>
     </div>
 </div>
@@ -28,7 +26,7 @@
         //第一个实例
         table.render({
             elem: '#demo'
-            , height: 312
+            , height: 800
             , url: '/jobInfo' //数据接口
             , page: true //开启分页
             , parseData: function (res) { //res 即为原始返回的数据
@@ -45,13 +43,13 @@
             }
             , cols: [[ //表头
                 {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'companyAddr', title: '用户名', width: 80}
-                , {field: 'companyName', title: '性别', width: 80, sort: true}
-                , {field: 'jobAddr', title: '城市', width: 80}
-                , {field: 'jobDetail', title: '签名', width: 177}
-                , {field: 'jobName', title: '积分', width: 80, sort: true}
-                , {field: 'salary', title: '评分', width: 80, sort: true}
-                , {field: 'time', title: '职业', width: 80}
+                , {field: 'companyAddr', title: '用户名', width: 120}
+                , {field: 'companyName', title: '性别', width: 120, sort: true}
+                , {field: 'jobAddr', title: '城市', width: 120}
+                , {field: 'jobDetail', title: '签名', width: 200}
+                , {field: 'jobName', title: '积分', width: 120, sort: true}
+                , {field: 'salary', title: '评分', width: 120, sort: true}
+                , {field: 'time', title: '职业', width: 120}
                 , {field: 'url', title: '财富', width: 135, sort: true}
             ]]
             , text: {
