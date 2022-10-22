@@ -7,6 +7,7 @@ import com.hfut.beike.entity.House;
 import com.hfut.beike.pipeline.HousePipeline;
 import com.hfut.beike.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.scheduler.BloomFilterDuplicateRemover;
@@ -27,6 +28,7 @@ public class HouseServiceImpl extends ServiceImpl<HouseDao, House> implements Ho
     @Autowired
     HousePipeline housePipeline;
 
+    @Scheduled(cron = "0 0 10,14,16 * * ?")
     @Override
     public void spider() {
         String[] cities = {"bj", "sh", "gz", "sz", "cc", "cd", "cq", "cs", "dl", "fz", "gy", "hhht", "hrb",
