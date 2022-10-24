@@ -46,16 +46,16 @@
         // tabcard:过滤器值,lay-filter所绑定的
         element.on('tab(tab-all)', function (data) {
             switch(data.index){
-                case 1:
-                    getJobInfo();
-                    break;
                 case 0:
                     getHouseInfo();
+                    break;
+                case 1:
+                    getJobInfo();
                     break;
             }
         });
         function onLoad(){
-            getHouseInfo();
+            getJobInfo();
         }
         //第一个实例
         function getJobInfo() {
