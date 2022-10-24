@@ -16,19 +16,17 @@
             <li>职业表</li>
         </ul>
         <div class="layui-tab-content">
-            <div class="layui-tab-item">
-                <div class="layui-row">
-                    <div class="layui-row">
-                        <div style="margin: 20px 20px auto" class="layui-col-md10">
-                            <table id="house" lay-filter="test"></table>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="layui-tab-item layui-show">
                 <div class="layui-row">
                     <div style="margin: 20px 20px auto" class="layui-col-md10">
-                        <table id="job" lay-filter="test"></table>
+                        <table id="house" lay-filter="house"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div class="layui-row">
+                    <div style="margin: 20px 20px auto" class="layui-col-md10">
+                        <table id="job" lay-filter="job"></table>
                     </div>
                 </div>
             </div>
@@ -42,21 +40,20 @@
         var table = layui.table;
         var element = layui.element;
         var $ = layui.jquery;
-        onLoad();
+        element.render('house');
         // tabcard:过滤器值,lay-filter所绑定的
         element.on('tab(tab-all)', function (data) {
-            switch(data.index){
+            switch (data.index) {
                 case 0:
-                    getHouseInfo();
+                    getJobInfo();
                     break;
                 case 1:
-                    getJobInfo();
+                    getHouseInfo();
                     break;
             }
         });
-        function onLoad(){
-            getJobInfo();
-        }
+        onLoad();
+
         //第一个实例
         function getJobInfo() {
             table.render({
@@ -93,7 +90,8 @@
                 }
             });
         }
-        function getHouseInfo(){
+
+        function getHouseInfo() {
             table.render({
                 elem: '#house'
                 , height: 800
@@ -127,6 +125,10 @@
                     none: '暂无相关数据' //默认：无数据。
                 }
             });
+        }
+
+        function onLoad() {
+            getHouseInfo();
         }
     });
 </script>
