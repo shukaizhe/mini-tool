@@ -28,10 +28,8 @@ public class JobProcessor implements PageProcessor {
      */
     @Override
     public void process(Page page) {
-
         //解析列表页
         List<Selectable> nodes = page.getHtml().css("div#resultList div.el").nodes();
-
         if (CollUtil.isEmpty(nodes)) {
             //为空表示这是招聘详情页,解析页面,获取招聘详情信息,保存数据
             try {
@@ -55,19 +53,21 @@ public class JobProcessor implements PageProcessor {
                     }
                 }
             }
-
-            //获取下一页的url
-            List<String> all = page.getHtml().css("div.p_in li.bk a").links().all();
-            String bkUrl = all.get(all.size() - 1);
-            log.info("下一页Url:{}", bkUrl);
-            if (StrUtil.containsAny(bkUrl, "11.html")) {
-                System.out.println("已查到10页数据,无须无限爬取数据");
-                return;
-            }
-
-            page.addTargetRequest(bkUrl);
+            getNextPage(page);
         }
 
+    }
+
+    private static void getNextPage(Page page) {
+        //获取下一页的url
+        List<String> all = page.getHtml().css("div.p_in li.bk a").links().all();
+        String bkUrl = all.get(all.size() - 1);
+        log.info("下一页Url:{}", bkUrl);
+        if (StrUtil.containsAny(bkUrl, "11.html")) {
+            log.info("已查到10页数据,无须无限爬取数据");
+            return;
+        }
+        page.addTargetRequest(bkUrl);
     }
 
     /**

@@ -51,8 +51,7 @@ public class JobInfoServiceImpl extends ServiceImpl<JobInfoDao, JobInfo> impleme
     public List<JobInfo> selectJobInfoByUrl(String url) {
         QueryWrapper<JobInfo> wrapper = new QueryWrapper<>();
         wrapper.eq("url", url);
-        List<JobInfo> jobInfos = this.baseMapper.selectList(wrapper);
-        return jobInfos;
+        return this.baseMapper.selectList(wrapper);
     }
 }
 
