@@ -7,8 +7,6 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.Serializable;
-
 /**
  * 招聘信息(JobInfo)表实体类
  *
