@@ -80,7 +80,6 @@ public class HouseController extends ApiController {
      */
     @PutMapping
     public R update(@RequestBody House house) {
-        System.out.println(1L);
         return success(this.houseService.updateById(house));
     }
 
