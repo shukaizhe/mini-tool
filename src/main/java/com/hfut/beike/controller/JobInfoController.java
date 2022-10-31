@@ -20,6 +20,7 @@ import java.util.List;
  * @since 2022-10-19 16:11:20
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("jobInfo")
 public class JobInfoController extends ApiController {
     /**
