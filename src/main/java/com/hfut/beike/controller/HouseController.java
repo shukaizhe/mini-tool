@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hfut.beike.entity.House;
 import com.hfut.beike.service.HouseService;
+import org.springframework.boot.origin.Origin;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -20,6 +21,7 @@ import java.util.List;
  * @since 2022-10-19 16:25:18
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("house")
 public class HouseController extends ApiController {
     /**
