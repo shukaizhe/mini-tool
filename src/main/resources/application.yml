@@ -1,0 +1,17 @@
+debug: false
+logging:
+    level:
+        com:
+            hfut:
+                beike:
+                    dao: info
+server:
+    port: 8081
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: pscale_pw_7hRxdHLV5XZwHFkLjmF9KTbJarHQmsaWmNUeOf0K5m5
+        url: jdbc:mysql://us-east.connect.psdb.cloud:3306/yugan2023?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=true
+        username: tpb4do7goljbu6vrb66f
+    thymeleaf:
+        check-template-location: false
