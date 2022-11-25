@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @EnableScheduling
 @MapperScan("com.hfut.beike.dao")
-@ServletComponentScan
+//@ServletComponentScan
 @SpringBootApplication
 public class HouseApplication {
     public static void main(String[] args) {
