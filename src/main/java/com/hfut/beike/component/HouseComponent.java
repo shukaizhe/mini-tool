@@ -15,7 +15,7 @@ import us.codecraft.webmagic.selector.Html;
 @Component
 public class HouseComponent implements PageProcessor {
 
-    private Site site = Site.me()
+    private final Site site = Site.me()
             .setCharset("utf8")
             .setTimeOut(10 * 1000)
             .setRetrySleepTime(3 * 1000)
