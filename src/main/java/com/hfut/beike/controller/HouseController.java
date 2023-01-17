@@ -2,12 +2,10 @@ package com.hfut.beike.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.api.ApiController;
-import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hfut.beike.common.R;
 import com.hfut.beike.entity.House;
 import com.hfut.beike.service.HouseService;
-import org.springframework.boot.origin.Origin;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -38,7 +36,7 @@ public class HouseController extends ApiController {
      * @return 所有数据
      */
     @GetMapping
-    public R selectAll(Page<House> page, House house) {
+    public R<?> selectAll(Page<House> page, House house) {
         return success(this.houseService.page(page, new QueryWrapper<>(house)));
     }
 
@@ -47,7 +45,7 @@ public class HouseController extends ApiController {
      * @return 所有数据
      */
     @GetMapping("/run")
-    public R run() {
+    public R<?> run() {
         this.houseService.spider();
         return success("ok");
     }
@@ -59,7 +57,7 @@ public class HouseController extends ApiController {
      * @return 单条数据
      */
     @GetMapping("{id}")
-    public R selectOne(@PathVariable Serializable id) {
+    public R<?> selectOne(@PathVariable Serializable id) {
         return success(this.houseService.getById(id));
     }
 
@@ -70,7 +68,7 @@ public class HouseController extends ApiController {
      * @return 新增结果
      */
     @PostMapping
-    public R insert(@RequestBody House house) {
+    public R<?> insert(@RequestBody House house) {
         return success(this.houseService.save(house));
     }
 
@@ -81,7 +79,7 @@ public class HouseController extends ApiController {
      * @return 修改结果
      */
     @PutMapping
-    public R update(@RequestBody House house) {
+    public R<?> update(@RequestBody House house) {
         return success(this.houseService.updateById(house));
     }
 
@@ -92,7 +90,7 @@ public class HouseController extends ApiController {
      * @return 删除结果
      */
     @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
+    public R<?> delete(@RequestParam("idList") List<Long> idList) {
         return success(this.houseService.removeByIds(idList));
     }
 }
