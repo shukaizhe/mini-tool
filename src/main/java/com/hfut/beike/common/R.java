@@ -96,43 +96,6 @@ public class R<T> implements Serializable {
     }
 
     @Override
-    public boolean equals(final Object o) {
-        if (o == this) {
-            return true;
-        } else if (!(o instanceof R)) {
-            return false;
-        } else {
-            R<?> other = (R)o;
-            if (!other.canEqual(this)) {
-                return false;
-            } else if (this.getCode() != other.getCode()) {
-                return false;
-            } else {
-                Object this$data = this.getData();
-                Object other$data = other.getData();
-                if (this$data == null) {
-                    if (other$data != null) {
-                        return false;
-                    }
-                } else if (!this$data.equals(other$data)) {
-                    return false;
-                }
-
-                Object this$msg = this.getMsg();
-                Object other$msg = other.getMsg();
-                if (this$msg == null) {
-                    return other$msg == null;
-                }
-                return this$msg.equals(other$msg);
-            }
-        }
-    }
-
-    protected boolean canEqual(final Object other) {
-        return other instanceof R;
-    }
-
-    @Override
     public String toString() {
         return "R(code=" + this.getCode() + ", data=" + this.getData() + ", msg=" + this.getMsg() + ")";
     }
