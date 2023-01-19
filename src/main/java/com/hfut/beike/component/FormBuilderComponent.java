@@ -24,7 +24,7 @@ public class FormBuilderComponent {
         formDataPropertiesDTO.setTitle("公司名称");
         formDataPropertiesDTO.setDefaultValue("Liu.Jun");
         FormDataPropertiesDTO formDataPropertiesDTO1 = new FormDataPropertiesDTO();
-        formDataPropertiesDTO1.setType("number");
+        formDataPropertiesDTO1.setType("string");
         formDataPropertiesDTO1.setTitle("公司联系方式");
         formDataPropertiesDTO1.setDefaultValue("10");
         formProperties.put("companyName", formDataPropertiesDTO);
