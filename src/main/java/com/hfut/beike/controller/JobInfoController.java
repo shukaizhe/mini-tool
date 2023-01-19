@@ -1,6 +1,7 @@
 package com.hfut.beike.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -101,6 +102,7 @@ public class JobInfoController extends ApiController {
         schemaBus.produce(1, jsonObject)
                 .formSchema()
                 .UISchema();
+        jsonObject = JSON.parseObject(jsonObject.toJSONString());
         return success(jsonObject);
     }
 }
