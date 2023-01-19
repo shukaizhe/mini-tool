@@ -2,6 +2,7 @@ package com.hfut.beike.schema;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hfut.beike.entity.FormDataPropertiesDTO;
+import com.hfut.beike.entity.Items;
 import com.hfut.beike.entity.UIOptionsDTO;
 
 import java.util.Arrays;
@@ -58,6 +59,13 @@ public class SchemaBuilder implements Schema {
         formDataPropertiesDTO6.setField("jobDetail");
         formDataPropertiesDTO6.setType("string");
         formDataPropertiesDTO6.setTitle("职位详情");
+        FormDataPropertiesDTO formDataPropertiesDTO7 = new FormDataPropertiesDTO();
+        formDataPropertiesDTO7.setField("time");
+        formDataPropertiesDTO7.setType("string");
+        formDataPropertiesDTO7.setFormat("date");
+        Items items = new Items();
+        items.setType("string");
+        formDataPropertiesDTO7.setItems(items);
         formProperties.put(formDataPropertiesDTO.getField(), formDataPropertiesDTO);
         formProperties.put(formDataPropertiesDTO1.getField(), formDataPropertiesDTO1);
         formProperties.put(formDataPropertiesDTO2.getField(), formDataPropertiesDTO2);
@@ -65,6 +73,7 @@ public class SchemaBuilder implements Schema {
         formProperties.put(formDataPropertiesDTO4.getField(), formDataPropertiesDTO4);
         formProperties.put(formDataPropertiesDTO5.getField(), formDataPropertiesDTO5);
         formProperties.put(formDataPropertiesDTO6.getField(), formDataPropertiesDTO6);
+        formProperties.put(formDataPropertiesDTO7.getField(), formDataPropertiesDTO7);
         json.put("type", "object");
         json.put("required", Arrays.asList("companyName", "companyAddr"));
         json.put("properties", formProperties);
