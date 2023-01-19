@@ -1,13 +1,12 @@
 package com.hfut.beike.controller;
 
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hfut.beike.common.R;
-import com.hfut.beike.component.FormBuilderComponent;
 import com.hfut.beike.entity.JobInfo;
+import com.hfut.beike.schema.SchemaBus;
 import com.hfut.beike.service.JobInfoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +31,7 @@ public class JobInfoController extends ApiController {
     private JobInfoService jobInfoService;
 
     @Resource
-    private FormBuilderComponent formBuilderComponent;
+    private SchemaBus schemaBus;
 
     /**
      * 分页查询所有数据
@@ -53,7 +52,7 @@ public class JobInfoController extends ApiController {
      * @return 单条数据
      */
     @GetMapping("{id}")
-    public R<?>  selectOne(@PathVariable Serializable id) {
+    public R<?> selectOne(@PathVariable Serializable id) {
         return success(this.jobInfoService.getById(id));
     }
 
@@ -86,7 +85,7 @@ public class JobInfoController extends ApiController {
      * @return 删除结果
      */
     @DeleteMapping
-    public R<?>  delete(@RequestParam("idList") List<Long> idList) {
+    public R<?> delete(@RequestParam("idList") List<Long> idList) {
         return success(this.jobInfoService.removeByIds(idList));
     }
 
@@ -99,7 +98,9 @@ public class JobInfoController extends ApiController {
     @GetMapping("/getJobProperties")
     public R<?> getJobProperties() {
         JSONObject jsonObject = new JSONObject();
-        formBuilderComponent.schemaBuilder(jsonObject);
+        schemaBus.produce(1, jsonObject)
+                .formSchema()
+                .UISchema();
         return success(jsonObject);
     }
 }
