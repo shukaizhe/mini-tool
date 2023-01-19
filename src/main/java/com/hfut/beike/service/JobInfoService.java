@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface JobInfoService extends IService<JobInfo> {
     void getJobInfo();
+
     List<JobInfo> selectJobInfoByUrl(String url);
 }
 

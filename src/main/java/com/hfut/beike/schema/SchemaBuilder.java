@@ -1,23 +1,32 @@
-package com.hfut.beike.component;
+package com.hfut.beike.schema;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hfut.beike.entity.FormDataPropertiesDTO;
-import org.springframework.stereotype.Component;
+import com.hfut.beike.entity.UIOptionsDTO;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Classname FormBuilderCompent
+ * @Classname SchemaBuilder
  * @Description
- * @Date 2023/1/19 10:16
+ * @Date 2023/1/19 14:15
  * @Created by shukz
  */
-@Component
-public class FormBuilderComponent {
+public class SchemaBuilder implements Schema {
 
-    public void schemaBuilder(JSONObject json) {
+    private final Integer tableId;
+
+    private final JSONObject json;
+
+    public SchemaBuilder(Integer tableId,JSONObject json) {
+        this.tableId = tableId;
+        this.json = json;
+    }
+
+    @Override
+    public Schema formSchema() {
         Map<String, FormDataPropertiesDTO> formProperties = new HashMap<>();
         FormDataPropertiesDTO formDataPropertiesDTO = new FormDataPropertiesDTO();
         formDataPropertiesDTO.setType("string");
@@ -28,13 +37,24 @@ public class FormBuilderComponent {
         formDataPropertiesDTO1.setTitle("公司联系方式");
         formDataPropertiesDTO1.setDefaultValue("10");
         formProperties.put("companyName", formDataPropertiesDTO);
-        formProperties.put("companyAddr",formDataPropertiesDTO1);
+        formProperties.put("companyAddr", formDataPropertiesDTO1);
         json.put("type", "object");
         json.put("required", Arrays.asList("companyName", "companyAddr"));
         json.put("properties", formProperties);
+        return this;
     }
 
-    public void uiSchemaBuilder(JSONObject json) {
-
+    @Override
+    public Schema UISchema() {
+        UIOptionsDTO uiOptionsDTO = new UIOptionsDTO();
+        uiOptionsDTO.setType("textarea");
+        uiOptionsDTO.setPlaceholder("请输入职位详情");
+        uiOptionsDTO.setRows(5);
+        Map<String, UIOptionsDTO> uiMap = new HashMap<>();
+        uiMap.put("ui:options",uiOptionsDTO);
+        Map<String,Map<String, UIOptionsDTO>> uiSchema = new HashMap<>();
+        uiSchema.put("companyName",uiMap);
+        json.put("uiSchema", uiSchema);
+        return this;
     }
 }
