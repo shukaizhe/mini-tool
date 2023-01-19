@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.hfut.beike.entity.FormDataPropertiesDTO;
 import com.hfut.beike.entity.UIOptionsDTO;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Classname SchemaBuilder
@@ -18,7 +20,7 @@ public class SchemaBuilder implements Schema {
 
     private final JSONObject json;
 
-    public SchemaBuilder(Integer tableId,JSONObject json) {
+    public SchemaBuilder(Integer tableId, JSONObject json) {
         this.tableId = tableId;
         this.json = json;
     }
@@ -32,30 +34,30 @@ public class SchemaBuilder implements Schema {
         formDataPropertiesDTO.setTitle("公司名称");
         formDataPropertiesDTO.setDefaultValue("Liu.Jun");
         FormDataPropertiesDTO formDataPropertiesDTO1 = new FormDataPropertiesDTO();
-        formDataPropertiesDTO.setField("companyAddr");
+        formDataPropertiesDTO1.setField("companyAddr");
         formDataPropertiesDTO1.setType("string");
         formDataPropertiesDTO1.setTitle("公司联系方式");
         formDataPropertiesDTO1.setDefaultValue("10");
         FormDataPropertiesDTO formDataPropertiesDTO2 = new FormDataPropertiesDTO();
         formDataPropertiesDTO2.setField("jobName");
-        formDataPropertiesDTO1.setType("string");
-        formDataPropertiesDTO1.setTitle("职位名称");
+        formDataPropertiesDTO2.setType("string");
+        formDataPropertiesDTO2.setTitle("职位名称");
         FormDataPropertiesDTO formDataPropertiesDTO3 = new FormDataPropertiesDTO();
-        formDataPropertiesDTO2.setField("jobAddr");
-        formDataPropertiesDTO1.setType("string");
-        formDataPropertiesDTO1.setTitle("工作地点");
+        formDataPropertiesDTO3.setField("jobAddr");
+        formDataPropertiesDTO3.setType("string");
+        formDataPropertiesDTO3.setTitle("工作地点");
         FormDataPropertiesDTO formDataPropertiesDTO4 = new FormDataPropertiesDTO();
-        formDataPropertiesDTO2.setField("salary");
-        formDataPropertiesDTO1.setType("string");
-        formDataPropertiesDTO1.setTitle("薪资范围");
+        formDataPropertiesDTO4.setField("salary");
+        formDataPropertiesDTO4.setType("string");
+        formDataPropertiesDTO4.setTitle("薪资范围");
         FormDataPropertiesDTO formDataPropertiesDTO5 = new FormDataPropertiesDTO();
-        formDataPropertiesDTO2.setField("url");
-        formDataPropertiesDTO1.setType("string");
-        formDataPropertiesDTO1.setTitle("招聘信息详情页");
+        formDataPropertiesDTO5.setField("url");
+        formDataPropertiesDTO5.setType("string");
+        formDataPropertiesDTO5.setTitle("招聘信息详情页");
         FormDataPropertiesDTO formDataPropertiesDTO6 = new FormDataPropertiesDTO();
-        formDataPropertiesDTO2.setField("jobDetail");
-        formDataPropertiesDTO1.setType("string");
-        formDataPropertiesDTO1.setTitle("职位详情");
+        formDataPropertiesDTO6.setField("jobDetail");
+        formDataPropertiesDTO6.setType("string");
+        formDataPropertiesDTO6.setTitle("职位详情");
         formProperties.put(formDataPropertiesDTO.getField(), formDataPropertiesDTO);
         formProperties.put(formDataPropertiesDTO1.getField(), formDataPropertiesDTO1);
         formProperties.put(formDataPropertiesDTO2.getField(), formDataPropertiesDTO2);
@@ -76,9 +78,9 @@ public class SchemaBuilder implements Schema {
         uiOptionsDTO.setPlaceholder("请输入职位详情");
         uiOptionsDTO.setRows(5);
         Map<String, UIOptionsDTO> uiMap = new HashMap<>();
-        uiMap.put("ui:options",uiOptionsDTO);
-        Map<String,Map<String, UIOptionsDTO>> uiSchema = new HashMap<>();
-        uiSchema.put("companyName",uiMap);
+        uiMap.put("ui:options", uiOptionsDTO);
+        Map<String, Map<String, UIOptionsDTO>> uiSchema = new HashMap<>();
+        uiSchema.put("companyName", uiMap);
         json.put("uiSchema", uiSchema);
         return this;
     }
