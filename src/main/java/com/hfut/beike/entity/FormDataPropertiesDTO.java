@@ -11,6 +11,7 @@ import lombok.Data;
  */
 @Data
 public class FormDataPropertiesDTO {
+    private String field;
     private String type;
     private String title;
     // 与java关键字重名
