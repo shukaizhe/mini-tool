@@ -62,7 +62,7 @@ public class SchemaBuilder implements Schema {
         FormDataPropertiesDTO formDataPropertiesDTO7 = new FormDataPropertiesDTO();
         formDataPropertiesDTO7.setField("time");
         formDataPropertiesDTO7.setType("string");
-        formDataPropertiesDTO6.setTitle("工作时间");
+        formDataPropertiesDTO7.setTitle("工作时间");
         formDataPropertiesDTO7.setFormat("date");
         Items items = new Items();
         items.setType("string");
