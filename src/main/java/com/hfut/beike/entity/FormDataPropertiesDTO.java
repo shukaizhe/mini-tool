@@ -14,6 +14,8 @@ public class FormDataPropertiesDTO {
     private String field;
     private String type;
     private String title;
+    private String format;
+    private Items items;
     // 与java关键字重名
     @JSONField(name = "default")
     private String defaultValue;
