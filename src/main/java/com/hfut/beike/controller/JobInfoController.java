@@ -2,9 +2,11 @@ package com.hfut.beike.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hfut.beike.common.R;
+import com.hfut.beike.component.FormBuilderComponent;
 import com.hfut.beike.entity.JobInfo;
 import com.hfut.beike.service.JobInfoService;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +30,9 @@ public class JobInfoController extends ApiController {
      */
     @Resource
     private JobInfoService jobInfoService;
+
+    @Resource
+    private FormBuilderComponent formBuilderComponent;
 
     /**
      * 分页查询所有数据
@@ -93,48 +98,8 @@ public class JobInfoController extends ApiController {
 
     @GetMapping("/getJobProperties")
     public R<?> getJobProperties() {
-        return R.ok(JSON.parse("properties: {\n" +
-                "          companyName: {\n" +
-                "            type: 'string',\n" +
-                "            title: '公司名称',\n" +
-                "            default: 'Liu.Jun',\n" +
-                "          },\n" +
-                "          companyAddr: {\n" +
-                "            type: 'string',\n" +
-                "            title: '公司联系方式',\n" +
-                "            default: '10',\n" +
-                "          },\n" +
-                "          jobName: {\n" +
-                "            type: 'string',\n" +
-                "            title: '职位名称',\n" +
-                "            minLength: 5\n" +
-                "          },\n" +
-                "          jobAddr: {\n" +
-                "            type: 'string',\n" +
-                "            title: '工作地点'\n" +
-                "          },\n" +
-                "          salary: {\n" +
-                "            type: 'string',\n" +
-                "            title: '薪资范围',\n" +
-                "          },\n" +
-                "          url: {\n" +
-                "            type: 'string',\n" +
-                "            title: '招聘信息详情页'\n" +
-                "          },\n" +
-                "          time: {\n" +
-                "            title: '职位最近发布时间',\n" +
-                "            type: 'string',\n" +
-                "            format: 'date',\n" +
-                "            items: {\n" +
-                "              type: 'string'\n" +
-                "            },\n" +
-                "\n" +
-                "          },\n" +
-                "          jobDetail: {\n" +
-                "            type: 'string',\n" +
-                "            title: '职位详情',\n" +
-                "            minLength: 1\n" +
-                "          }\n" +
-                "        }"));
+        JSONObject jsonObject = new JSONObject();
+        formBuilderComponent.schemaBuilder(jsonObject);
+        return success(jsonObject);
     }
 }
