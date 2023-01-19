@@ -1,7 +1,8 @@
 package com.hfut.beike.schema;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.hfut.beike.entity.FormDataPropertiesDTO;
+import com.hfut.beike.entity.FormBuild;
 import com.hfut.beike.entity.Items;
 import com.hfut.beike.entity.UIOptionsDTO;
 
@@ -28,45 +29,45 @@ public class SchemaBuilder implements Schema {
 
     @Override
     public Schema formSchema() {
-        Map<String, FormDataPropertiesDTO> formProperties = new HashMap<>();
-        FormDataPropertiesDTO formDataPropertiesDTO = new FormDataPropertiesDTO();
+        Map<String, FormBuild> formProperties = new HashMap<>();
+        FormBuild formDataPropertiesDTO = new FormBuild();
         formDataPropertiesDTO.setField("companyName");
         formDataPropertiesDTO.setType("string");
         formDataPropertiesDTO.setTitle("公司名称");
         formDataPropertiesDTO.setDefaultValue("Liu.Jun");
-        FormDataPropertiesDTO formDataPropertiesDTO1 = new FormDataPropertiesDTO();
+        FormBuild formDataPropertiesDTO1 = new FormBuild();
         formDataPropertiesDTO1.setField("companyAddr");
         formDataPropertiesDTO1.setType("string");
         formDataPropertiesDTO1.setTitle("公司联系方式");
         formDataPropertiesDTO1.setDefaultValue("10");
-        FormDataPropertiesDTO formDataPropertiesDTO2 = new FormDataPropertiesDTO();
+        FormBuild formDataPropertiesDTO2 = new FormBuild();
         formDataPropertiesDTO2.setField("jobName");
         formDataPropertiesDTO2.setType("string");
         formDataPropertiesDTO2.setTitle("职位名称");
-        FormDataPropertiesDTO formDataPropertiesDTO3 = new FormDataPropertiesDTO();
+        FormBuild formDataPropertiesDTO3 = new FormBuild();
         formDataPropertiesDTO3.setField("jobAddr");
         formDataPropertiesDTO3.setType("string");
         formDataPropertiesDTO3.setTitle("工作地点");
-        FormDataPropertiesDTO formDataPropertiesDTO4 = new FormDataPropertiesDTO();
+        FormBuild formDataPropertiesDTO4 = new FormBuild();
         formDataPropertiesDTO4.setField("salary");
         formDataPropertiesDTO4.setType("string");
         formDataPropertiesDTO4.setTitle("薪资范围");
-        FormDataPropertiesDTO formDataPropertiesDTO5 = new FormDataPropertiesDTO();
+        FormBuild formDataPropertiesDTO5 = new FormBuild();
         formDataPropertiesDTO5.setField("url");
         formDataPropertiesDTO5.setType("string");
         formDataPropertiesDTO5.setTitle("招聘信息详情页");
-        FormDataPropertiesDTO formDataPropertiesDTO6 = new FormDataPropertiesDTO();
+        FormBuild formDataPropertiesDTO6 = new FormBuild();
         formDataPropertiesDTO6.setField("jobDetail");
         formDataPropertiesDTO6.setType("string");
         formDataPropertiesDTO6.setTitle("职位详情");
-        FormDataPropertiesDTO formDataPropertiesDTO7 = new FormDataPropertiesDTO();
+        FormBuild formDataPropertiesDTO7 = new FormBuild();
         formDataPropertiesDTO7.setField("time");
         formDataPropertiesDTO7.setType("string");
         formDataPropertiesDTO7.setTitle("工作时间");
         formDataPropertiesDTO7.setFormat("date");
         Items items = new Items();
         items.setType("string");
-        formDataPropertiesDTO7.setItems(items);
+        formDataPropertiesDTO7.setItems(JSON.parseObject("{'type':'string'}",Items.class));
         formProperties.put(formDataPropertiesDTO.getField(), formDataPropertiesDTO);
         formProperties.put(formDataPropertiesDTO1.getField(), formDataPropertiesDTO1);
         formProperties.put(formDataPropertiesDTO2.getField(), formDataPropertiesDTO2);
