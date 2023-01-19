@@ -10,7 +10,10 @@ import lombok.Data;
  */
 @Data
 public class UIOptionsDTO {
+
     private String placeholder;
+
     private String type;
+
     private Integer rows;
 }
