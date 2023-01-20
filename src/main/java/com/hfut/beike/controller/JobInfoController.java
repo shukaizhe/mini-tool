@@ -4,6 +4,7 @@ package com.hfut.beike.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hfut.beike.common.R;
@@ -110,11 +111,5 @@ public class JobInfoController extends ApiController {
                 .UISchema();
         jsonObject = JSON.parseObject(jsonObject.toJSONString());
         return success(jsonObject);
-    }
-
-    @GetMapping("/getFormBuild")
-    public R<?> getFormBuild() {
-        List<FormBuild> list = formBuildService.list();
-        return success(list);
     }
 }
