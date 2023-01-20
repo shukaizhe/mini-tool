@@ -9,7 +9,7 @@ import lombok.Data;
  * @Created by shukz
  */
 @Data
-public class UIOptionsDTO {
+public class UIOptions {
 
     private String placeholder;
 

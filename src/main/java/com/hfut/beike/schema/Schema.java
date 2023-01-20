@@ -1,7 +1,5 @@
 package com.hfut.beike.schema;
 
-import com.alibaba.fastjson.JSONObject;
-
 /**
  * @Classname Schema
  * @Description
@@ -11,5 +9,5 @@ import com.alibaba.fastjson.JSONObject;
 public interface Schema {
     Schema formSchema();
 
-    Schema UISchema();
+    default void UISchema(){};
 }

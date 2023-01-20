@@ -1,12 +1,9 @@
 package com.hfut.beike.schema;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.hfut.beike.entity.FormBuild;
-import com.hfut.beike.entity.Items;
-import com.hfut.beike.entity.UIOptionsDTO;
+import com.hfut.beike.entity.UIOptions;
 import org.apache.commons.lang3.StringUtils;
-import org.jsoup.internal.StringUtil;
 
 import java.util.*;
 
@@ -45,16 +42,15 @@ public class SchemaBuilder implements Schema {
     }
 
     @Override
-    public Schema UISchema() {
-        UIOptionsDTO uiOptionsDTO = new UIOptionsDTO();
-        uiOptionsDTO.setType("textarea");
-        uiOptionsDTO.setPlaceholder("请输入职位详情");
-        uiOptionsDTO.setRows(5);
-        Map<String, UIOptionsDTO> uiMap = new HashMap<>();
-        uiMap.put("ui:options", uiOptionsDTO);
-        Map<String, Map<String, UIOptionsDTO>> uiSchema = new HashMap<>();
-        uiSchema.put("companyName", uiMap);
+    public void UISchema() {
+        UIOptions uiOptions = new UIOptions();
+        uiOptions.setType("textarea");
+        uiOptions.setPlaceholder("请输入职位详情");
+        uiOptions.setRows(5);
+        Map<String, UIOptions> uiMap = new HashMap<>();
+        uiMap.put("ui:options", uiOptions);
+        Map<String, Map<String, UIOptions>> uiSchema = new HashMap<>();
+        uiSchema.put("jobDetail", uiMap);
             json.put("uiSchema", uiSchema);
-        return this;
     }
 }
