@@ -102,7 +102,8 @@ public class JobInfoController extends ApiController {
         JSONObject jsonObject = new JSONObject(true);
         schemaBus.produce(tableId, jsonObject)
                 .formSchema()
-                .UISchema();
+                .UISchema()
+                .errorSchema();
         jsonObject = JSON.parseObject(jsonObject.toJSONString(), Feature.OrderedField);
         return success(jsonObject);
     }
