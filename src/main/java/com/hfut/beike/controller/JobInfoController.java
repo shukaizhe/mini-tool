@@ -9,7 +9,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hfut.beike.common.R;
 import com.hfut.beike.entity.JobInfo;
 import com.hfut.beike.schema.SchemaBus;
-import com.hfut.beike.service.FormBuildService;
 import com.hfut.beike.service.JobInfoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,9 +31,6 @@ public class JobInfoController extends ApiController {
      */
     @Resource
     private JobInfoService jobInfoService;
-
-    @Resource
-    private FormBuildService formBuildService;
 
     @Resource
     private SchemaBus schemaBus;
