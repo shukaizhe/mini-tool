@@ -24,6 +24,7 @@ public class SchemaBus {
     public Schema produce(Integer tableId, JSONObject json) {
         LambdaQueryWrapper<FormBuild> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(FormBuild::getFormId, tableId);
+        queryWrapper.orderByAsc(FormBuild::getId);
         List<FormBuild> list = formBuildService.list(queryWrapper);
         return new SchemaBuilder(list, json);
     }
