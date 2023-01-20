@@ -42,7 +42,7 @@ public class SchemaBuilder implements Schema {
     }
 
     @Override
-    public Schema UISchema() {
+    public Schema uiSchema() {
         UIOptions uiOptions = new UIOptions();
         uiOptions.setType("textarea");
         uiOptions.setPlaceholder("请输入职位详情");

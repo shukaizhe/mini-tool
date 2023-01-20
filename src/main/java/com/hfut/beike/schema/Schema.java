@@ -9,7 +9,7 @@ package com.hfut.beike.schema;
 public interface Schema {
     Schema formSchema();
 
-    Schema UISchema();
+    Schema uiSchema();
 
     default void errorSchema(){};
 }
