@@ -1,7 +1,13 @@
 package com.hfut.beike.schema;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.hfut.beike.entity.FormBuild;
+import com.hfut.beike.service.FormBuildService;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Classname SchemaBus
@@ -11,7 +17,14 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class SchemaBus {
+
+    @Resource
+    private FormBuildService formBuildService;
+
     public Schema produce(Integer tableId, JSONObject json) {
-        return new SchemaBuilder(tableId, json);
+        LambdaQueryWrapper<FormBuild> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(FormBuild::getFormId, tableId);
+        List<FormBuild> list = formBuildService.list(queryWrapper);
+        return new SchemaBuilder(list, json);
     }
 }
