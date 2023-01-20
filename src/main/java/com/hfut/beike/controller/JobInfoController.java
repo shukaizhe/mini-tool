@@ -98,9 +98,9 @@ public class JobInfoController extends ApiController {
     }
 
     @GetMapping("/getJobProperties")
-    public R<?> getJobProperties() {
+    public R<?> getJobProperties(@RequestParam Integer tableId) {
         JSONObject jsonObject = new JSONObject(true);
-        schemaBus.produce(1, jsonObject)
+        schemaBus.produce(tableId, jsonObject)
                 .formSchema()
                 .UISchema();
         jsonObject = JSON.parseObject(jsonObject.toJSONString(), Feature.OrderedField);
