@@ -30,10 +30,10 @@ public class SchemaBuilder implements Schema {
         for (FormBuild formBuild : list) {
             formBuild.setId(null);
             formBuild.setFormId(null);
-            if(StringUtils.isBlank(formBuild.getDefaultValue())){
+            if (StringUtils.isBlank(formBuild.getDefaultValue())) {
                 formBuild.setDefaultValue(null);
             }
-            formProperties.put(formBuild.getField(),formBuild);
+            formProperties.put(formBuild.getField(), formBuild);
         }
         json.put("type", "object");
         json.put("required", Arrays.asList("companyName", "companyAddr"));
@@ -42,7 +42,7 @@ public class SchemaBuilder implements Schema {
     }
 
     @Override
-    public void UISchema() {
+    public Schema UISchema() {
         UIOptions uiOptions = new UIOptions();
         uiOptions.setType("textarea");
         uiOptions.setPlaceholder("请输入职位详情");
@@ -51,6 +51,12 @@ public class SchemaBuilder implements Schema {
         uiMap.put("ui:options", uiOptions);
         Map<String, Map<String, UIOptions>> uiSchema = new HashMap<>();
         uiSchema.put("jobDetail", uiMap);
-            json.put("uiSchema", uiSchema);
+        json.put("uiSchema", uiSchema);
+        return this;
+    }
+
+    @Override
+    public void errorSchema() {
+        json.put("errorSchema", null);
     }
 }
