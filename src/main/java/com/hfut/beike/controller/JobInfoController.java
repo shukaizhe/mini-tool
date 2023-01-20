@@ -3,12 +3,10 @@ package com.hfut.beike.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.alibaba.fastjson.parser.Feature;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hfut.beike.common.R;
-import com.hfut.beike.entity.FormBuild;
 import com.hfut.beike.entity.JobInfo;
 import com.hfut.beike.schema.SchemaBus;
 import com.hfut.beike.service.FormBuildService;
@@ -105,11 +103,11 @@ public class JobInfoController extends ApiController {
 
     @GetMapping("/getJobProperties")
     public R<?> getJobProperties() {
-        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject = new JSONObject(true);
         schemaBus.produce(1, jsonObject)
                 .formSchema()
                 .UISchema();
-        jsonObject = JSON.parseObject(jsonObject.toJSONString());
+        jsonObject = JSON.parseObject(jsonObject.toJSONString(), Feature.OrderedField);
         return success(jsonObject);
     }
 }

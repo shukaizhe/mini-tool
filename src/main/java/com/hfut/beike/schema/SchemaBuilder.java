@@ -8,10 +8,7 @@ import com.hfut.beike.entity.UIOptionsDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.internal.StringUtil;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Classname SchemaBuilder
@@ -32,7 +29,7 @@ public class SchemaBuilder implements Schema {
 
     @Override
     public Schema formSchema() {
-        Map<String, FormBuild> formProperties = new HashMap<>();
+        Map<String, FormBuild> formProperties = new LinkedHashMap<>();
         for (FormBuild formBuild : list) {
             formBuild.setId(null);
             formBuild.setFormId(null);
