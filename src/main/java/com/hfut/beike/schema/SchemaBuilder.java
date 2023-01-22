@@ -28,20 +28,21 @@ public class SchemaBuilder implements Schema {
     @Override
     public Schema formSchema() {
         Map<String, FormBuild> formProperties = new LinkedHashMap<>();
-        for (FormBuild formBuild : list) {
-            formBuild.setId(null);
-            formBuild.setFormId(null);
-            if (StringUtils.isBlank(formBuild.getDefaultValue())) {
-                formBuild.setDefaultValue(null);
-            }
-            formProperties.put(formBuild.getField(), formBuild);
-        }
         List<String> required = list.stream()
                 .filter(d -> d.getIsRequired().equals("Y"))
                 .map(FormBuild::getField)
                 .collect(Collectors.toList());
+        list.forEach((FormBuild formBuild) -> {
+            formBuild.setId(null);
+            formBuild.setFormId(null);
+            formBuild.setIsRequired(null);
+            if (StringUtils.isBlank(formBuild.getDefaultValue())) {
+                formBuild.setDefaultValue(null);
+            }
+            formProperties.put(formBuild.getField(), formBuild);
+        });
         json.put("type", "object");
-        json.put("required", Collections.singletonList(required.toString()));
+        json.put("required", required);
         json.put("properties", formProperties);
         return this;
     }
