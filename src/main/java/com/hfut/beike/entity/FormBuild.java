@@ -20,6 +20,7 @@ public class FormBuild {
     private String field;
     private String type;
     private String title;
+    private String isRequired;
     private String format;
     @TableField(typeHandler = FastjsonTypeHandler.class)
     private Items items;

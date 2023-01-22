@@ -6,6 +6,7 @@ import com.hfut.beike.entity.UIOptions;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @Classname SchemaBuilder
@@ -35,8 +36,12 @@ public class SchemaBuilder implements Schema {
             }
             formProperties.put(formBuild.getField(), formBuild);
         }
+        List<String> required = list.stream()
+                .filter(d -> d.getIsRequired().equals("Y"))
+                .map(FormBuild::getField)
+                .collect(Collectors.toList());
         json.put("type", "object");
-        json.put("required", Arrays.asList("companyName", "companyAddr"));
+        json.put("required", Collections.singletonList(required.toString()));
         json.put("properties", formProperties);
         return this;
     }

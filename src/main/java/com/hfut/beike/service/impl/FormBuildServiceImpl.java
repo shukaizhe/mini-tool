@@ -6,8 +6,6 @@ import com.hfut.beike.entity.FormBuild;
 import com.hfut.beike.service.FormBuildService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service("formBuildService")
 public class FormBuildServiceImpl extends ServiceImpl<FormBuildDao, FormBuild> implements FormBuildService {
 
