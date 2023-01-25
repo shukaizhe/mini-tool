@@ -24,6 +24,8 @@ public class FormBuild {
     private String format;
     @TableField(typeHandler = FastjsonTypeHandler.class)
     private Items items;
+    @TableField(typeHandler = FastjsonTypeHandler.class)
+    private UIOptions uiOptions;
     // 与java关键字重名
     @JSONField(name = "default")
     private String defaultValue;
