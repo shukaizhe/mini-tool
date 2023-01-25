@@ -3,9 +3,13 @@ package com.hfut.beike.schema;
 import com.alibaba.fastjson.JSONObject;
 import com.hfut.beike.entity.FormBuild;
 import com.hfut.beike.entity.UIOptions;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -49,14 +53,15 @@ public class SchemaBuilder implements Schema {
 
     @Override
     public Schema uiSchema() {
-        UIOptions uiOptions = new UIOptions();
-        uiOptions.setType("textarea");
-        uiOptions.setPlaceholder("请输入职位详情");
-        uiOptions.setRows(5);
-        Map<String, UIOptions> uiMap = new HashMap<>();
-        uiMap.put("ui:options", uiOptions);
         Map<String, Map<String, UIOptions>> uiSchema = new HashMap<>();
-        uiSchema.put("jobDetail", uiMap);
+        List<FormBuild> formBuilds = list.parallelStream()
+                .filter(d -> ObjectUtils.isNotEmpty(d.getUiOptions()))
+                        .collect(Collectors.toList());
+        formBuilds.forEach((FormBuild formBuild) -> {
+            Map<String, UIOptions> uiMap = new HashMap<>();
+            uiMap.put("ui:options", formBuild.getUiOptions());
+            uiSchema.put(formBuild.getField(), uiMap);
+        });
         json.put("uiSchema", uiSchema);
         return this;
     }
