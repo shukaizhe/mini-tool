@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hfut.beike.common.R;
 import com.hfut.beike.entity.House;
+import com.hfut.beike.entity.User;
 import com.hfut.beike.service.HouseService;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -27,6 +29,9 @@ public class HouseController extends ApiController {
      */
     @Resource
     private HouseService houseService;
+
+    @Resource
+    private MongoTemplate mongoTemplate;
 
     /**
      * 分页查询所有数据
@@ -92,6 +97,15 @@ public class HouseController extends ApiController {
     @DeleteMapping
     public R<?> delete(@RequestParam("idList") List<Long> idList) {
         return success(this.houseService.removeByIds(idList));
+    }
+
+    @GetMapping("/testMongo")
+    public R<?> contextLoads(){
+        User user = new User();
+        user.setAge(20);
+        user.setName("test");
+        user.setEmail("123@qq.com");
+        return success(mongoTemplate.insert(user));
     }
 }
 

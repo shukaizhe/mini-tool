@@ -33,7 +33,7 @@ public class SchemaBuilder implements Schema {
     public Schema formSchema() {
         Map<String, FormBuild> formProperties = new LinkedHashMap<>();
         List<String> required = list.stream()
-                .filter(d -> d.getIsRequired().equals("Y"))
+                .filter(d -> "Y".equals(d.getIsRequired()))
                 .map(FormBuild::getField)
                 .collect(Collectors.toList());
         list.forEach((FormBuild formBuild) -> {
