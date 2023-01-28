@@ -19,3 +19,8 @@ spring:
         mongodb:
             uri: mongodb+srv://yugan2023:20TJNV2HFxVaYnEr@cluster0.tqccyyb.mongodb.net/?retryWrites=true&w=majority
             database: test
+minio:
+    endpoint: https://minio.minio--r4h6xb4mrjyh.addon.code.run:443 #Minio服务所在地址
+    bucketName: yugan2023 #存储桶名称
+    accessKey: 90390e2d3d6fb9b97e #访问的key
+    secretKey: 2f7a7b86b5f3d99d4d79d6ce8e29eb8f63f724 #访问的秘钥
