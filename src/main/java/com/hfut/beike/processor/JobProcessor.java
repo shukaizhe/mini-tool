@@ -5,6 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.hfut.beike.entity.JobInfo;
 import com.hfut.beike.service.JobInfoService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
@@ -83,7 +84,7 @@ public class JobProcessor implements PageProcessor {
         String companyAddr = text.get(text.size() - 1);
         String jobName = html.css("div.cn h1", "text").get();
         String jobStr = html.css("p.msg.ltype", "text").get();
-        String[] s = StrUtil.split(jobStr, "    ");
+        String[] s = StringUtils.split(jobStr, "    ");
         String jobAddr = s[0];
         String time = "";
         for (String s1 : s) {
