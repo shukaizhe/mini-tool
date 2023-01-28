@@ -47,6 +47,7 @@ public class HouseController extends ApiController {
 
     /**
      * 分页查询所有数据
+     *
      * @return 所有数据
      */
     @GetMapping("/run")
@@ -99,13 +100,10 @@ public class HouseController extends ApiController {
         return success(this.houseService.removeByIds(idList));
     }
 
-    @GetMapping("/testMongo")
-    public R<?> contextLoads(){
-        User user = new User();
-        user.setAge(20);
-        user.setName("test");
-        user.setEmail("123@qq.com");
-        return success(mongoTemplate.insert(user));
+    @PostMapping("/testMongo")
+    public R<?> contextLoads(@RequestBody User user) {
+        User user1 = mongoTemplate.insert(user);
+        return success(user1.getId());
     }
 }
 

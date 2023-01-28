@@ -10,6 +10,7 @@ import com.hfut.beike.common.R;
 import com.hfut.beike.entity.JobInfo;
 import com.hfut.beike.schema.SchemaBus;
 import com.hfut.beike.service.JobInfoService;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -26,6 +27,8 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequestMapping("jobInfo")
 public class JobInfoController extends ApiController {
+    @Resource
+    private MongoTemplate mongoTemplate;
     /**
      * 服务对象
      */
@@ -105,6 +108,7 @@ public class JobInfoController extends ApiController {
                 .uiSchema()
                 .errorSchema();
         jsonObject = JSON.parseObject(jsonObject.toJSONString(), Feature.OrderedField);
+//        mongoTemplate.insert(jsonObject,"formSchema");
         return success(jsonObject);
     }
 }
