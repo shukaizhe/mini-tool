@@ -3,6 +3,8 @@ package com.hfut.beike.controller;
 import com.hfut.beike.common.R;
 import com.hfut.beike.config.MinioConfig;
 import com.hfut.beike.entity.MinioBucket;
+import com.hfut.beike.expection.ApiErrorCode;
+import com.hfut.beike.expection.IErrorCode;
 import com.hfut.beike.utils.MinioUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -54,7 +56,7 @@ public class UploadController extends ApiController {
         if (null != objectName) {
             return success((prop.getEndpoint() + "/" + prop.getBucketName() + "/" + objectName));
         }
-        return failed("failed");
+        return failed(ApiErrorCode.FAILED);
     }
 
     @GetMapping("/preview")
@@ -65,7 +67,7 @@ public class UploadController extends ApiController {
     @PostMapping("/download")
     public R<?> download(@RequestParam("fileName") String fileName, HttpServletResponse res) {
         minioUtil.download(fileName, res);
-        return success("ok");
+        return success(ApiErrorCode.SUCCESS);
     }
 
     @DeleteMapping("/delete")
