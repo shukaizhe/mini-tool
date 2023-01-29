@@ -5,10 +5,10 @@ import com.hfut.beike.config.MinioConfig;
 import com.hfut.beike.entity.MinioBucket;
 import com.hfut.beike.utils.MinioUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -22,9 +22,9 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "product/file")
 public class UploadController extends ApiController {
-    @Autowired
+    @Resource
     private MinioUtil minioUtil;
-    @Autowired
+    @Resource
     private MinioConfig prop;
 
     @GetMapping("/bucketExists")
@@ -62,13 +62,13 @@ public class UploadController extends ApiController {
         return success(minioUtil.preview(fileName));
     }
 
-    @GetMapping("/download")
+    @PostMapping("/download")
     public R<?> download(@RequestParam("fileName") String fileName, HttpServletResponse res) {
         minioUtil.download(fileName, res);
         return success("ok");
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public R<?> remove(String url) {
         String objName = url.substring(url.lastIndexOf(prop.getBucketName() + "/") + prop.getBucketName().length() + 1);
         minioUtil.remove(objName);

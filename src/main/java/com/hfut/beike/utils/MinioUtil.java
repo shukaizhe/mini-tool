@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +39,7 @@ public class MinioUtil {
 
     /**
      * 查看存储bucket是否存在
+     *
      * @return boolean
      */
     public Boolean bucketExists(String bucketName) {
@@ -55,6 +55,7 @@ public class MinioUtil {
 
     /**
      * 创建存储bucket
+     *
      * @return Boolean
      */
     public Boolean makeBucket(String bucketName) {
@@ -68,8 +69,10 @@ public class MinioUtil {
         }
         return true;
     }
+
     /**
      * 删除存储bucket
+     *
      * @return Boolean
      */
     public Boolean removeBucket(String bucketName) {
@@ -83,26 +86,25 @@ public class MinioUtil {
         }
         return true;
     }
+
     /**
      * 获取全部bucket
      */
     public List<MinioBucket> getAllBuckets() {
         try {
-            List<Bucket> allBuckets = minioClient.listBuckets();
             List<MinioBucket> minioBuckets = new ArrayList<>();
-            for (Bucket bucket : allBuckets) {
+            minioClient.listBuckets().forEach((Bucket bucket) -> {
                 MinioBucket minioBucket = new MinioBucket();
                 minioBucket.setName(bucket.name());
                 minioBucket.setZonedDateTime(bucket.creationDate());
                 minioBuckets.add(minioBucket);
-            }
+            });
             return minioBuckets;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
 
 
     /**
@@ -113,7 +115,7 @@ public class MinioUtil {
      */
     public String upload(MultipartFile file) {
         String originalFilename = file.getOriginalFilename();
-        if (StringUtils.isBlank(originalFilename)){
+        if (StringUtils.isBlank(originalFilename)) {
             throw new RuntimeException();
         }
         String fileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -132,10 +134,11 @@ public class MinioUtil {
 
     /**
      * 预览图片
+     *
      * @param fileName
      * @return
      */
-    public String preview(String fileName){
+    public String preview(String fileName) {
         // 查看文件地址
         GetPresignedObjectUrlArgs build = GetPresignedObjectUrlArgs.builder().bucket(prop.getBucketName()).object(fileName).method(Method.GET).build();
         try {
@@ -148,19 +151,20 @@ public class MinioUtil {
 
     /**
      * 文件下载
+     *
      * @param fileName 文件名称
-     * @param res response
+     * @param res      response
      * @return Boolean
      */
     public void download(String fileName, HttpServletResponse res) {
         GetObjectArgs objectArgs = GetObjectArgs.builder().bucket(prop.getBucketName())
                 .object(fileName).build();
-        try (GetObjectResponse response = minioClient.getObject(objectArgs)){
+        try (GetObjectResponse response = minioClient.getObject(objectArgs)) {
             byte[] buf = new byte[1024];
             int len;
-            try (FastByteArrayOutputStream os = new FastByteArrayOutputStream()){
-                while ((len=response.read(buf))!=-1){
-                    os.write(buf,0,len);
+            try (FastByteArrayOutputStream os = new FastByteArrayOutputStream()) {
+                while ((len = response.read(buf)) != -1) {
+                    os.write(buf, 0, len);
                 }
                 os.flush();
                 byte[] bytes = os.toByteArray();
@@ -168,7 +172,7 @@ public class MinioUtil {
                 // 设置强制下载不打开
                 // res.setContentType("application/force-download");
                 res.addHeader("Content-Disposition", "attachment;fileName=" + fileName);
-                try (ServletOutputStream stream = res.getOutputStream()){
+                try (ServletOutputStream stream = res.getOutputStream()) {
                     stream.write(bytes);
                     stream.flush();
                 }
@@ -180,6 +184,7 @@ public class MinioUtil {
 
     /**
      * 查看文件对象
+     *
      * @return 存储bucket内文件对象信息
      */
     public List<Item> listObjects() {
@@ -199,14 +204,15 @@ public class MinioUtil {
 
     /**
      * 删除
+     *
      * @param fileName
      * @return
      * @throws Exception
      */
-    public boolean remove(String fileName){
+    public boolean remove(String fileName) {
         try {
-            minioClient.removeObject( RemoveObjectArgs.builder().bucket(prop.getBucketName()).object(fileName).build());
-        }catch (Exception e){
+            minioClient.removeObject(RemoveObjectArgs.builder().bucket(prop.getBucketName()).object(fileName).build());
+        } catch (Exception e) {
             return false;
         }
         return true;
