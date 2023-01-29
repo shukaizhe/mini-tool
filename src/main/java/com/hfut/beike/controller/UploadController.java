@@ -2,8 +2,8 @@ package com.hfut.beike.controller;
 
 import com.hfut.beike.common.R;
 import com.hfut.beike.config.MinioConfig;
+import com.hfut.beike.entity.MinioBucket;
 import com.hfut.beike.utils.MinioUtil;
-import io.minio.messages.Bucket;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +44,7 @@ public class UploadController extends ApiController {
 
     @GetMapping("/getAllBuckets")
     public R<?> getAllBuckets() {
-        List<Bucket> allBuckets = minioUtil.getAllBuckets();
+        List<MinioBucket> allBuckets = minioUtil.getAllBuckets();
         return success(allBuckets);
     }
 
