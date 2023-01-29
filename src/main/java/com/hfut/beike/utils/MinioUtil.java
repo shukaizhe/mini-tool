@@ -9,7 +9,6 @@ import io.minio.messages.Bucket;
 import io.minio.messages.Item;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.assertj.core.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FastByteArrayOutputStream;
@@ -18,9 +17,10 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Classname MinioUtil
@@ -119,7 +119,7 @@ public class MinioUtil {
             throw new RuntimeException();
         }
         String fileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
-        String objectName = DateUtil.formatAsDatetime(new Date()) + "/" + fileName;
+        String objectName = "image" + File.separator + fileName;
         try {
             PutObjectArgs objectArgs = PutObjectArgs.builder().bucket(prop.getBucketName()).object(objectName)
                     .stream(file.getInputStream(), file.getSize(), -1).contentType(file.getContentType()).build();
@@ -140,7 +140,13 @@ public class MinioUtil {
      */
     public String preview(String fileName) {
         // 查看文件地址
-        GetPresignedObjectUrlArgs build = GetPresignedObjectUrlArgs.builder().bucket(prop.getBucketName()).object(fileName).method(Method.GET).build();
+        String objectName = "image" + File.separator + fileName;
+        GetPresignedObjectUrlArgs build = GetPresignedObjectUrlArgs.builder()
+                .bucket(prop.getBucketName())
+                .object(objectName)
+                .expiry(86400, TimeUnit.SECONDS)
+                .method(Method.GET)
+                .build();
         try {
             return minioClient.getPresignedObjectUrl(build);
         } catch (Exception e) {
