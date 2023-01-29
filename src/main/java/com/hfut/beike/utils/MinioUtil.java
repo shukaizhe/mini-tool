@@ -2,6 +2,7 @@ package com.hfut.beike.utils;
 
 import cn.hutool.core.lang.UUID;
 import com.hfut.beike.config.MinioConfig;
+import com.hfut.beike.entity.MinioBucket;
 import io.minio.*;
 import io.minio.http.Method;
 import io.minio.messages.Bucket;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -84,10 +86,17 @@ public class MinioUtil {
     /**
      * 获取全部bucket
      */
-    public List<Bucket> getAllBuckets() {
+    public List<MinioBucket> getAllBuckets() {
         try {
-            List<Bucket> buckets = minioClient.listBuckets();
-            return buckets;
+            List<Bucket> allBuckets = minioClient.listBuckets();
+            List<MinioBucket> minioBuckets = new ArrayList<>();
+            for (Bucket bucket : allBuckets) {
+                MinioBucket minioBucket = new MinioBucket();
+                minioBucket.setName(bucket.name());
+                minioBucket.setZonedDateTime(bucket.creationDate());
+                minioBuckets.add(minioBucket);
+            }
+            return minioBuckets;
         } catch (Exception e) {
             e.printStackTrace();
         }
