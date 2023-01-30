@@ -10,6 +10,8 @@ import com.hfut.beike.common.R;
 import com.hfut.beike.entity.JobInfo;
 import com.hfut.beike.schema.SchemaBus;
 import com.hfut.beike.service.JobInfoService;
+import org.jasypt.encryption.StringEncryptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +47,15 @@ public class JobInfoController extends ApiController {
      * @param jobInfo 查询实体
      * @return 所有数据
      */
+
+    @Autowired
+    private StringEncryptor encryptor;
+
+    @GetMapping("encode")
+    public void encrypt(){
+        System.out.println(encryptor.encrypt("2f7a7b86b5f3d99d4d79d6ce8e29eb8f63f724"));
+    }
+
     @GetMapping
     public R<?> selectAll(Page<JobInfo> page, JobInfo jobInfo) {
         return success(this.jobInfoService.page(page, new QueryWrapper<>(jobInfo)));

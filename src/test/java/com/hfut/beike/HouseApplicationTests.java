@@ -1,7 +1,9 @@
 package com.hfut.beike;
 
 import com.hfut.beike.component.HouseComponent;
+import org.jasypt.encryption.StringEncryptor;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.scheduler.BloomFilterDuplicateRemover;
@@ -32,5 +34,4 @@ class HouseApplicationTests {
                     .run();
         }
     }
-
 }
