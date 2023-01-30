@@ -11,6 +11,6 @@ FROM openjdk:8-jre-slim
 ARG pwd
 ENV password=${pwd}
 COPY --from=build /home/app/target/* /usr/local/lib/
-CMD ["java","-jar","/usr/local/lib/house-0.0.1-SNAPSHOT.jar ${password}"]
+CMD ["java","-jar","/usr/local/lib/house-0.0.1-SNAPSHOT.jar -Djasypt.encryptor.password=${password}"]
 EXPOSE 8081
 MAINTAINER yugan2023
