@@ -10,6 +10,6 @@ RUN mvn -f /home/app/pom.xml clean package -DskipTests
 FROM openjdk:8-jre-slim
 ENV pwd ${pwd}
 COPY --from=build /home/app/target/* /usr/local/lib/
-CMD ["java","-jar","/usr/local/lib/house-0.0.1-SNAPSHOT.jar -Djasypt.encryptor.password=","${pwd}"]
+CMD ["java","-jar","/usr/local/lib/house-0.0.1-SNAPSHOT.jar -Djasypt.encryptor.password=${pwd}"]
 EXPOSE 8081
 MAINTAINER yugan2023
