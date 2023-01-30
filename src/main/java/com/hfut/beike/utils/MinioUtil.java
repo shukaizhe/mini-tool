@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -119,7 +118,7 @@ public class MinioUtil {
             throw new RuntimeException();
         }
         String fileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
-        String objectName = "image" + File.separator + fileName;
+        String objectName = "image" + "/" + fileName;
         try {
             PutObjectArgs objectArgs = PutObjectArgs.builder().bucket(prop.getBucketName()).object(objectName)
                     .stream(file.getInputStream(), file.getSize(), -1).contentType(file.getContentType()).build();
@@ -140,7 +139,7 @@ public class MinioUtil {
      */
     public String preview(String fileName) {
         // 查看文件地址
-        String objectName = "image" + File.separator + fileName;
+        String objectName = "image" + "/" + fileName;
         GetPresignedObjectUrlArgs build = GetPresignedObjectUrlArgs.builder()
                 .bucket(prop.getBucketName())
                 .object(objectName)

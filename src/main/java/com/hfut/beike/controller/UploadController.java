@@ -4,7 +4,6 @@ import com.hfut.beike.common.R;
 import com.hfut.beike.config.MinioConfig;
 import com.hfut.beike.entity.MinioBucket;
 import com.hfut.beike.expection.ApiErrorCode;
-import com.hfut.beike.expection.IErrorCode;
 import com.hfut.beike.utils.MinioUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
