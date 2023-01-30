@@ -8,7 +8,8 @@ RUN mvn -f /home/app/pom.xml clean package -DskipTests
 #
 # 该镜像需要依赖的基础镜像
 FROM openjdk:8-jre-slim
+ENV pwd ${pwd}
 COPY --from=build /home/app/target/* /usr/local/lib/
-CMD ["java","-jar","/usr/local/lib/house-0.0.1-SNAPSHOT.jar"]
+CMD ["java","-jar","/usr/local/lib/house-0.0.1-SNAPSHOT.jar -Djasypt.encryptor.password=","${pwd}"]
 EXPOSE 8081
 MAINTAINER yugan2023
