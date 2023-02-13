@@ -29,24 +29,26 @@ public class FormController extends ApiController {
 
     @GetMapping("/getForm")
     public R<?> getForm(@RequestParam Integer tableId) {
-        JSONObject jsonObject = new JSONObject(true);
-        schemaBus.produce(tableId, jsonObject)
-                .formSchema()
-                .uiSchema()
-                .errorSchema();
-        jsonObject = JSON.parseObject(jsonObject.toJSONString(), Feature.OrderedField);
+        JSONObject jsonObject = buildSchema(tableId);
         return success(jsonObject);
     }
 
     @PostMapping("setForm")
     public R<?> setForm(@RequestParam Integer tableId) {
-        JSONObject jsonObject = new JSONObject(true);
-        schemaBus.produce(tableId, jsonObject)
-                .formSchema()
-                .uiSchema()
-                .errorSchema();
-        jsonObject = JSON.parseObject(jsonObject.toJSONString(), Feature.OrderedField);
+        JSONObject jsonObject = buildSchema(tableId);
         mongoTemplate.insert(jsonObject,"formSchema");
         return success(ApiErrorCode.SUCCESS);
+    }
+
+    /**
+     * 
+     * @param tableId
+     * @return
+     */
+    private JSONObject buildSchema(Integer tableId) {
+        JSONObject jsonObject = new JSONObject(true);
+        schemaBus.produce(tableId, jsonObject).formSchema().uiSchema().errorSchema();
+        jsonObject = JSON.parseObject(jsonObject.toJSONString(), Feature.OrderedField);
+        return jsonObject;
     }
 }
