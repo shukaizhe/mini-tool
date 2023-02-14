@@ -2,6 +2,9 @@ package com.hfut.beike.controller;
 
 import cn.hutool.core.collection.ListUtil;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.Feature;
+import com.hfut.beike.common.R;
 import com.hfut.beike.common.enums.CategoryEnum;
 import com.hfut.beike.common.enums.OrderChannelEnum;
 import com.hfut.beike.common.enums.PromotionTypeEnum;
@@ -27,9 +30,12 @@ import java.util.List;
 @RequestMapping("table")
 public class TableController extends ApiController {
     @GetMapping(value = "/getJson")
-    public String getJson(){
+    public R<?> getJson(){
+        JSONObject jsonObject = new JSONObject(true);
         PriceCalcReqVO req = mockReq();
-        return JSON.toJSONString(req);
+        String text = JSON.toJSONString(req);
+        jsonObject = JSON.parseObject(text, Feature.OrderedField);
+        return success(jsonObject);
     }
 
     private PriceCalcReqVO mockReq(){
