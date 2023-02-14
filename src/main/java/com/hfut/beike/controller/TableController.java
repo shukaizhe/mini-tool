@@ -12,6 +12,7 @@ import com.hfut.beike.common.enums.SkuSourceEnum;
 import com.hfut.beike.entity.vo.PriceCalcReqVO;
 import com.hfut.beike.entity.vo.ProductPackVO;
 import com.hfut.beike.entity.vo.PromotionInfoVO;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +27,7 @@ import java.util.List;
  * @Date 2023/1/29 16:06
  * @Created by shukz
  */
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("table")
 public class TableController extends ApiController {
