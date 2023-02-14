@@ -33,7 +33,14 @@ public class FormController extends ApiController {
         return success(jsonObject);
     }
 
-    @PostMapping("setForm")
+    @PutMapping("/updateForm")
+    public R<?> updateForm(@RequestParam Integer tableId) {
+        JSONObject jsonObject = buildSchema(tableId);
+        mongoTemplate.insert(jsonObject,"formSchema");
+        return success(ApiErrorCode.SUCCESS);
+    }
+
+    @PostMapping("/setForm")
     public R<?> setForm(@RequestParam Integer tableId) {
         JSONObject jsonObject = buildSchema(tableId);
         mongoTemplate.insert(jsonObject,"formSchema");

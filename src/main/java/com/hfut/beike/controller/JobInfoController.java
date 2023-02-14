@@ -102,16 +102,4 @@ public class JobInfoController extends ApiController {
         jobInfoService.getJobInfo();
         return R.ok("success");
     }
-
-    @GetMapping("/getJobProperties")
-    public R<?> getJobProperties(@RequestParam Integer tableId) {
-        JSONObject jsonObject = new JSONObject(true);
-        schemaBus.produce(tableId, jsonObject)
-                .formSchema()
-                .uiSchema()
-                .errorSchema();
-        jsonObject = JSON.parseObject(jsonObject.toJSONString(), Feature.OrderedField);
-//        mongoTemplate.insert(jsonObject,"formSchema");
-        return success(jsonObject);
-    }
 }
