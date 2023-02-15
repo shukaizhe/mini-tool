@@ -27,8 +27,8 @@ import java.util.List;
  * @Date 2023/1/29 16:06
  * @Created by shukz
  */
-@CrossOrigin(origins = "*")
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("table")
 public class TableController extends ApiController {
     @GetMapping(value = "/getJson")
