@@ -15,6 +15,7 @@ import com.hfut.beike.entity.vo.ProductPackVO;
 import com.hfut.beike.entity.vo.PromotionInfoVO;
 import com.hfut.beike.expection.ApiErrorCode;
 import com.hfut.beike.expection.IErrorCode;
+import com.yomahub.liteflow.builder.el.LiteFlowChainELBuilder;
 import com.yomahub.liteflow.core.FlowExecutor;
 import com.yomahub.liteflow.flow.LiteflowResponse;
 import org.springframework.lang.Nullable;
@@ -32,13 +33,16 @@ import java.util.List;
  * @Created by shukz
  */
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("table")
 public class TableController extends ApiController {
 
     @Resource
     private FlowExecutor flowExecutor;
 
+    /**
+     * 获取mock json
+     * @return
+     */
     @GetMapping(value = "/getJson")
     public R<?> getJson(){
         JSONObject jsonObject = new JSONObject(true);
@@ -48,6 +52,11 @@ public class TableController extends ApiController {
         return success(jsonObject);
     }
 
+    /**
+     * 提交编排引擎接口
+     * @param reqData
+     * @return
+     */
     @PostMapping("/submit")
     @ResponseBody
     public R<?> submit(@Nullable @RequestBody String reqData){
@@ -60,9 +69,26 @@ public class TableController extends ApiController {
             e.printStackTrace();
             return failed(ApiErrorCode.FAILED);
         }
-
     }
 
+    /**
+     * 验证编排规则
+     * @param ruleText
+     * @return
+     */
+    @PostMapping("/valid")
+    public R<?> validRule(@RequestBody String ruleText){
+        boolean isValid = LiteFlowChainELBuilder.validate(ruleText);
+        if(isValid){
+           return success("规则验证成功");
+        }
+        return failed(ApiErrorCode.FAILED);
+    }
+
+    /**
+     * mock数据
+     * @return
+     */
     private PriceCalcReqVO mockReq(){
         PriceCalcReqVO req = new PriceCalcReqVO();
         req.setOrderNo("SO2020070611120001");
