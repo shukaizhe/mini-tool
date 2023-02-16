@@ -27,7 +27,7 @@ public class CorsConfig {
         //放行哪些原始请求头部信息
         config.addAllowedHeader("*");
         //暴露哪些头部信息
-        config.addExposedHeader("*");
+//        config.addExposedHeader("*");
         //2. 添加映射路径
         UrlBasedCorsConfigurationSource corsConfigurationSource = new UrlBasedCorsConfigurationSource();
         corsConfigurationSource.registerCorsConfiguration("/**", config);
