@@ -26,7 +26,7 @@ public class StepPrintCmp extends CustomNodeComponent<PriceContext> {
         StringBuilder logStr = new StringBuilder();
 
         logStr.append(MessageFormat.format("订单号[{0}]的价格计算的明细结果:\n", context.getOrderNo()));
-        logStr.append("|====================================================================\n");
+        logStr.append("|===================================================================\n");
         for(ProductPackVO pack : context.getProductPackList()){
             logStr.append(MessageFormat.format("|   {0} [{1}] [{2}]   {3} X {4}\n",
                     pack.getSkuName(),
@@ -36,12 +36,12 @@ public class StepPrintCmp extends CustomNodeComponent<PriceContext> {
                     pack.getCount()));
         }
 
-        logStr.append("|====================================================================\n");
+        logStr.append("|===================================================================\n");
         for(PriceStepVO step : context.getPriceStepList()){
-            logStr.append(MessageFormat.format("|   [{0} : {1}]\n",step.getStepDesc(),step.getPriceChange().setScale(2, BigDecimal.ROUND_HALF_UP).toString()));
+            logStr.append(MessageFormat.format("|   [{0} : {1}]\n",step.getStepDesc(),step.getPriceChange().setScale(2, RoundingMode.HALF_UP).toString()));
         }
-        logStr.append(MessageFormat.format("|   [最终价 : {0}]\n",context.getFinalOrderPrice().setScale(2, BigDecimal.ROUND_HALF_UP).toString()));
-        logStr.append("|====================================================================\n");
+        logStr.append(MessageFormat.format("|   [最终价 : {0}]\n",context.getFinalOrderPrice().setScale(2, RoundingMode.HALF_UP).toString()));
+        logStr.append("|===================================================================\n");
         log.info(logStr.toString());
         context.setPrintLog(logStr.toString());
     }
