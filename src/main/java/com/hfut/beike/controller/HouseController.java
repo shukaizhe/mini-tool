@@ -21,7 +21,6 @@ import java.util.List;
  * @since 2022-10-19 16:25:18
  */
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("house")
 public class HouseController extends ApiController {
     /**

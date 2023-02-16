@@ -18,7 +18,6 @@ import javax.annotation.Resource;
  * @Created by shukz
  */
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("form")
 public class FormController extends ApiController {
     @Resource
