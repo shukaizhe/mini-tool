@@ -1,0 +1,10 @@
+{
+  "flow": {
+    "chain": [
+      {
+        "name": "promotionChain",
+        "value": "THEN(fullCutCmp, fullDiscountCmp, rushBuyCmp)"
+      }
+    ]
+  }
+}

@@ -9,14 +9,18 @@ import com.hfut.beike.common.enums.CategoryEnum;
 import com.hfut.beike.common.enums.OrderChannelEnum;
 import com.hfut.beike.common.enums.PromotionTypeEnum;
 import com.hfut.beike.common.enums.SkuSourceEnum;
+import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceCalcReqVO;
 import com.hfut.beike.entity.vo.ProductPackVO;
 import com.hfut.beike.entity.vo.PromotionInfoVO;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.hfut.beike.expection.ApiErrorCode;
+import com.hfut.beike.expection.IErrorCode;
+import com.yomahub.liteflow.core.FlowExecutor;
+import com.yomahub.liteflow.flow.LiteflowResponse;
+import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +35,10 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequestMapping("table")
 public class TableController extends ApiController {
+
+    @Resource
+    private FlowExecutor flowExecutor;
+
     @GetMapping(value = "/getJson")
     public R<?> getJson(){
         JSONObject jsonObject = new JSONObject(true);
@@ -38,6 +46,21 @@ public class TableController extends ApiController {
         String text = JSON.toJSONString(req);
         jsonObject = JSON.parseObject(text, Feature.OrderedField);
         return success(jsonObject);
+    }
+
+    @PostMapping("/submit")
+    @ResponseBody
+    public R<?> submit(@Nullable @RequestBody String reqData){
+        try{
+            PriceCalcReqVO req = JSON.parseObject(reqData,PriceCalcReqVO.class);
+            Class<?>[] classes = new Class[]{PriceContext.class};
+            LiteflowResponse response = flowExecutor.execute2Resp("mainChain", req, classes);
+            return success(response.getContextBean(PriceContext.class).getPrintLog());
+        }catch (Exception e){
+            e.printStackTrace();
+            return failed(ApiErrorCode.FAILED);
+        }
+
     }
 
     private PriceCalcReqVO mockReq(){

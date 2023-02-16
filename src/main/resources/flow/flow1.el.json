@@ -1,0 +1,10 @@
+{
+  "flow": {
+    "chain": [
+      {
+        "name": "mainChain",
+        "value": "THEN(checkCmp,slotInitCmp,priceStepInitCmp,promotionConvertCmp,memberDiscountCmp,promotionChain,couponCmp,SWITCH(postageCondCmp).to(postageCmp, overseaPostageCmp),priceResultCmp,stepPrintCmp)"
+      }
+    ]
+  }
+}
