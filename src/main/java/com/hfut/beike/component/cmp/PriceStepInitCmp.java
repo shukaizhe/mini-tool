@@ -1,6 +1,7 @@
 package com.hfut.beike.component.cmp;
 
 import com.hfut.beike.common.enums.PriceTypeEnum;
+import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceStepVO;
 import com.hfut.beike.entity.vo.ProductPackVO;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * 价格步骤初始化器(把原价初始化进去)
  */
-@LiteflowComponent(value = "priceStepInitCmp", id = "priceStepInitCmp", name = "价格步骤初始化器(把原价初始化进去)")
+@LiteflowComponent(value = CmpConstant.PRICE_STEP_INIT_CMP, id = CmpConstant.PRICE_STEP_INIT_CMP, name = "价格步骤初始化器(把原价初始化进去)")
 public class PriceStepInitCmp extends CustomNodeComponent<PriceContext> {
     @Override
     public void process() throws Exception {

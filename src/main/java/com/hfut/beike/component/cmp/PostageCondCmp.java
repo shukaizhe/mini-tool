@@ -1,5 +1,6 @@
 package com.hfut.beike.component.cmp;
 
+import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
 import com.yomahub.liteflow.core.NodeSwitchComponent;
@@ -7,7 +8,7 @@ import com.yomahub.liteflow.core.NodeSwitchComponent;
 /**
  * 运费条件组件
  */
-@LiteflowComponent(value = "postageCondCmp", id = "postageCondCmp", name = "运费条件组件")
+@LiteflowComponent(value = CmpConstant.POSTAGE_COND_CMP, id = CmpConstant.POSTAGE_COND_CMP, name = "运费条件组件")
 public class PostageCondCmp extends NodeSwitchComponent {
     @Override
     public String processSwitch() throws Exception {

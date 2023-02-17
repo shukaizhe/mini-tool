@@ -1,5 +1,6 @@
 package com.hfut.beike.component.cmp;
 
+import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceCalcReqVO;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
@@ -8,7 +9,7 @@ import com.yomahub.liteflow.annotation.LiteflowComponent;
 /**
  * Slot初始化组件
  */
-@LiteflowComponent(value = "slotInitCmp", id = "slotInitCmp", name = "Slot初始化组件")
+@LiteflowComponent(value = CmpConstant.SLOT_INIT_CMP, id = CmpConstant.SLOT_INIT_CMP, name = "Slot初始化组件")
 public class SlotInitCmp extends CustomNodeComponent<PriceContext> {
     @Override
     public void process() throws Exception {

@@ -2,6 +2,7 @@ package com.hfut.beike.component.cmp;
 
 import com.hfut.beike.common.enums.PriceTypeEnum;
 import com.hfut.beike.common.enums.PromotionTypeEnum;
+import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceStepVO;
 import com.hfut.beike.entity.vo.ProductPackVO;
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 /**
  * 满折计算组件
  */
-@LiteflowComponent(value = "fullDiscountCmp", id = "fullDiscountCmp", name = "满折计算组件")
+@LiteflowComponent(value = CmpConstant.FULL_DISCOUNT_CMP, id = CmpConstant.FULL_DISCOUNT_CMP, name = "满折计算组件")
 public class FullDiscountCmp extends CustomNodeComponent<PriceContext> {
     @Override
     public void process() throws Exception {

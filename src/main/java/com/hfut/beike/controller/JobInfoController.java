@@ -36,9 +36,6 @@ public class JobInfoController extends ApiController {
     @Resource
     private JobInfoService jobInfoService;
 
-    @Resource
-    private SchemaBus schemaBus;
-
     /**
      * 分页查询所有数据
      *

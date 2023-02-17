@@ -3,7 +3,7 @@
     "chain": [
       {
         "name": "mainChain",
-        "value": "THEN(checkCmp,slotInitCmp,priceStepInitCmp,promotionConvertCmp,memberDiscountCmp,promotionChain,couponCmp,SWITCH(postageCondCmp).to(postageCmp, overseaPostageCmp),priceResultCmp,stepPrintCmp)"
+        "value": "THEN(checkCmp.tag('checkCmp1'),slotInitCmp.tag('slotInitCmp1'),priceStepInitCmp,promotionConvertCmp,memberDiscountCmp,promotionChain,couponCmp,SWITCH(postageCondCmp).to(postageCmp, overseaPostageCmp),priceResultCmp,stepPrintCmp)"
       }
     ]
   }

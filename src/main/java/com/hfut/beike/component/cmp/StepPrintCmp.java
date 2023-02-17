@@ -1,5 +1,6 @@
 package com.hfut.beike.component.cmp;
 
+import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceStepVO;
 import com.hfut.beike.entity.vo.ProductPackVO;
@@ -15,7 +16,7 @@ import java.text.MessageFormat;
 /**
  * 步骤日志生成组件
  */
-@LiteflowComponent(value = "stepPrintCmp", id = "stepPrintCmp", name = "步骤日志生成组件")
+@LiteflowComponent(value = CmpConstant.STEP_PRINT_CMP, id = CmpConstant.STEP_PRINT_CMP, name = "步骤日志生成组件")
 public class StepPrintCmp extends CustomNodeComponent<PriceContext> {
 
     private Logger log = LoggerFactory.getLogger(getClass());

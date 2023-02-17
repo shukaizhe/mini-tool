@@ -1,6 +1,7 @@
 package com.hfut.beike.component.cmp;
 
 import cn.hutool.core.collection.ListUtil;
+import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.ProductPackVO;
 import com.hfut.beike.entity.vo.PromotionInfoVO;
@@ -15,7 +16,7 @@ import java.util.List;
 /**
  * 把商品包的优惠信息转换成以优惠信息为主要维度的对象，以便于后面优惠信息的计算
  */
-@LiteflowComponent(value = "promotionConvertCmp", id = "promotionConvertCmp", name = "把商品包的优惠信息转换成以优惠信息为主要维度的对象，以便于后面优惠信息的计算")
+@LiteflowComponent(value = CmpConstant.PROMOTION_CONVERT_CMP, id = CmpConstant.PROMOTION_CONVERT_CMP, name = "把商品包的优惠信息转换成以优惠信息为主要维度的对象，以便于后面优惠信息的计算")
 public class PromotionConvertCmp extends CustomNodeComponent<PriceContext> {
     @Override
     public void process() throws Exception {

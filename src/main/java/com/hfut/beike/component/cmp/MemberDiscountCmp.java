@@ -1,6 +1,7 @@
 package com.hfut.beike.component.cmp;
 
 import com.hfut.beike.common.enums.PriceTypeEnum;
+import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceStepVO;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
@@ -13,7 +14,7 @@ import java.math.RoundingMode;
 /**
  * 会员折扣计算组件
  */
-@LiteflowComponent(value = "memberDiscountCmp", id = "memberDiscountCmp", name = "会员折扣计算组件")
+@LiteflowComponent(value = CmpConstant.MEMBER_DISCOUNT_CMP, id = CmpConstant.MEMBER_DISCOUNT_CMP, name = "会员折扣计算组件")
 public class MemberDiscountCmp extends CustomNodeComponent<PriceContext> {
     @Override
     public void process() throws Exception {

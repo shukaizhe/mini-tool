@@ -1,6 +1,7 @@
 package com.hfut.beike.component.cmp;
 
 import com.hfut.beike.common.enums.PriceTypeEnum;
+import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceStepVO;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
@@ -10,7 +11,7 @@ import java.math.BigDecimal;
 /**
  * 国内运费计算组件
  */
-@LiteflowComponent(value = "postageCmp", id = "postageCmp", name = "国内运费计算组件")
+@LiteflowComponent(value = CmpConstant.POSTAGE_CMP, id = CmpConstant.POSTAGE_CMP, name = "国内运费计算组件")
 public class PostageCmp extends CustomNodeComponent<PriceContext> {
     @Override
     public void process() throws Exception {
