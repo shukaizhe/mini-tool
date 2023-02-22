@@ -1,0 +1,38 @@
+HASOR_DATAQL_DATAWAY: 'true   '
+HASOR_DATAQL_DATAWAY_ADMIN: true
+HASOR_DATAQL_DATAWAY_API_URL: /api/
+HASOR_DATAQL_DATAWAY_AUTHORIZATION_ENABLE: false
+HASOR_DATAQL_DATAWAY_UI_URL: /interface-ui/
+debug: false
+liteflow:
+    ruleSource: flow/*.el.json
+logging:
+    level:
+        com:
+            hfut:
+                beike:
+                    dao: info
+minio:
+    accessKey: ENC(oBfZFFnGAIWtBTvTu02WHID3uKXmr2FU+lfW6iGEEDwHUjq6wD/gQX36SZpkgwqYLGcs3mspdrB3r7PUT6dCrA==)
+    bucketName: ENC(l+42Xjq3lHnV7vUL6YZtAGvH7G7sE3q0tQ3xx4DWlUFolwFBxIfkBtfz/wEvBHrM)
+    endpoint: ENC(a9oW8TIVW+SBceWpnG+6WGEOWytmuXL5k0i0yyEvuxrbsT3G13QRT3rqVJwH/qIWs8MDuqgJgf9eCf59Ov1VQ3q9EupNKLNisdT0JSytGoXVzzVQrtjpPg9kaT6nWdfj)
+    secretKey: ENC(FmerPKUcNCd1QgPXdtao1lf/HByvYRgg+tSx48vRpgs6H1rNCx4f/yjUDMYCT+0ct+5qlx09+UIJMIPq8HlX8FG38t3e7mfdBXG7TF5RGRE=)
+server:
+    port: 8081
+    servlet:
+        encoding:
+            charset: utf-8
+            enabled: true
+            force: true
+spring:
+    data:
+        mongodb:
+            database: test
+            uri: ENC(JdIe+09s8p6qzhgPlh4uKtA7k+QopJuAvep8KHosyQ8vT4hnslTXo/df6cbnO2YIzOar2RHlSogCivzjA+v5c8cPn85Fd6W8R0hI/RBjBW57CVN54CgZUVtfrUNMjImRskHiIk1FCK7KChIKhj0z3hKeLNm1rGsHDF8gdJST/CEOJ0KqCa5C2Db1xrAwEtjy)
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: ENC(sRNb/eZCPbB1HjcV89DaGfqCXRMOhFK+kEhtR8f1kWMPJjYWlcYXhWHqayiWagvJSpnkNhYxNlQnOYtGBaoFXBtm8/DUSwSXv68NvSQribZ5Xk/VMEFvnoYeCsdMMWYP)
+        url: ENC(6dkUvIM/jboeaiL5Z5Z9LZ9qWFLgZ/G/evNyjZc9I95vQo6YI/P3G0FSWQ5WA03mj52HazPVklhKyr6e1AX7+Y2PAF2v58U4F1JMHkD5LioGx6ZvQhDTzr1DNihAIwB+kX8abSah2NLhU6Gr4q2A1Rt2+N7uQ5HXFcEsmUmiND5079Q5CQ8uUrlx6bOBNbNP6EblTSJ4IIidWIwkHeOo70Rg47x2zIOKwVk4+ty74MM=)
+        username: ENC(4JW24asfQdn4FBFFpf22Onaizi8QJ+1BHMARv/egt1AV7ULIYqrY9NG4OXT33moH6rSX0jocGsa80HHq2e7yQA==)
+    thymeleaf:
+        check-template-location: false

@@ -17,6 +17,7 @@ public class CheckCmp extends CustomNodeComponent<PriceContext> {
 
     @Override
     public void process() throws Exception {
+        this.getContextBean()
         PriceContext context = getContext();
         //拿到请求参数
         PriceCalcReqVO req = this.getSlot().getRequestData();
