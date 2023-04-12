@@ -110,17 +110,6 @@
             <artifactId>jasypt-spring-boot-starter</artifactId>
             <version>3.0.5</version>
         </dependency>
-        <!--连通 Spring 和 Hasor-->
-        <dependency>
-            <groupId>net.hasor</groupId>
-            <artifactId>hasor-spring</artifactId>
-            <version>4.2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>net.hasor</groupId>
-            <artifactId>hasor-dataway</artifactId>
-            <version>4.2.5</version>
-        </dependency>
         <dependency>
             <groupId>com.yomahub</groupId>
             <artifactId>liteflow-spring-boot-starter</artifactId>
@@ -135,7 +124,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

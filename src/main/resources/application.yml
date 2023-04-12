@@ -1,8 +1,3 @@
-HASOR_DATAQL_DATAWAY: true
-HASOR_DATAQL_DATAWAY_ADMIN: true
-HASOR_DATAQL_DATAWAY_API_URL: /api/
-HASOR_DATAQL_DATAWAY_AUTHORIZATION_ENABLE: false
-HASOR_DATAQL_DATAWAY_UI_URL: /interface-ui/
 debug: false
 liteflow:
     ruleSource: flow/*.el.json
