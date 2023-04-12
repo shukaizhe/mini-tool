@@ -7,11 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * @author Chenzh
- */
-
-/**
- * 启用Hasor
+ * @author yugan2023
  */
 @EnableScheduling
 @MapperScan("com.hfut.beike.dao")

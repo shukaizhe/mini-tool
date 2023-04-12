@@ -21,11 +21,7 @@ public enum ApiErrorCode implements IErrorCode {
 
     public static ApiErrorCode fromCode(long code) {
         ApiErrorCode[] ecs = values();
-        ApiErrorCode[] var3 = ecs;
-        int var4 = ecs.length;
-
-        for(int var5 = 0; var5 < var4; ++var5) {
-            ApiErrorCode ec = var3[var5];
+        for (ApiErrorCode ec : ecs) {
             if (ec.getCode() == code) {
                 return ec;
             }

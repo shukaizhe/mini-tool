@@ -42,7 +42,7 @@ public class MinioUtil {
      * @return boolean
      */
     public Boolean bucketExists(String bucketName) {
-        Boolean found;
+        boolean found;
         try {
             found = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
         } catch (Exception e) {
@@ -122,7 +122,7 @@ public class MinioUtil {
         try {
             PutObjectArgs objectArgs = PutObjectArgs.builder().bucket(prop.getBucketName()).object(objectName)
                     .stream(file.getInputStream(), file.getSize(), -1).contentType(file.getContentType()).build();
-            //文件名称相同会覆盖
+            // 文件名称相同会覆盖
             minioClient.putObject(objectArgs);
         } catch (Exception e) {
             e.printStackTrace();
