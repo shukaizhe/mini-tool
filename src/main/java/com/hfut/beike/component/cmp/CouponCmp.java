@@ -19,7 +19,7 @@ public class CouponCmp extends CustomNodeComponent<PriceContext> {
     public void process() throws Exception {
         PriceContext context = getContext();
 
-        /**这里Mock下根据couponId取到的优惠卷面值为15元**/
+        // 这里Mock下根据couponId取到的优惠卷面值为15元
         Long couponId = context.getCouponId();
         BigDecimal couponPrice = new BigDecimal(15);
 

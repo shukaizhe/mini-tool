@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.0.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.hfut</groupId>
     <artifactId>house</artifactId>
@@ -113,7 +113,7 @@
         <dependency>
             <groupId>com.yomahub</groupId>
             <artifactId>liteflow-spring-boot-starter</artifactId>
-            <version>2.9.7</version>
+            <version>2.10.2</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-beanutils</artifactId>
