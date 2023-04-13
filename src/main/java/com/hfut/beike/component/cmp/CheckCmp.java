@@ -5,8 +5,6 @@ import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceCalcReqVO;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 初始化参数检查组件

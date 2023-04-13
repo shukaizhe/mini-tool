@@ -3,8 +3,6 @@ package com.hfut.beike.component.cmp;
 import com.hfut.beike.component.slot.Context;
 import com.yomahub.liteflow.core.NodeComponent;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

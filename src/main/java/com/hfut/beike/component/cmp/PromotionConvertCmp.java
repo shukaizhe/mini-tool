@@ -26,22 +26,22 @@ public class PromotionConvertCmp extends CustomNodeComponent<PriceContext> {
         List<PromotionPackVO> promotionPackList = new ArrayList<>();
 
         PromotionPackVO promotionPack;
-        for(ProductPackVO pack : context.getProductPackList()){
-            if(CollectionUtils.isEmpty(pack.getPromotionList())){
+        for (ProductPackVO pack : context.getProductPackList()) {
+            if (CollectionUtils.isEmpty(pack.getPromotionList())) {
                 continue;
             }
-            for(PromotionInfoVO promotion : pack.getPromotionList()){
+            for (PromotionInfoVO promotion : pack.getPromotionList()) {
                 promotionPack = new PromotionPackVO();
                 promotionPack.setId(promotion.getId());
-                if(promotionPackList.contains(promotionPack)){
+                if (promotionPackList.contains(promotionPack)) {
                     promotionPack = promotionPackList.get(promotionPackList.indexOf(promotionPack));
-                    if(promotionPack.getRelatedProductPackList().contains(pack)){
+                    if (promotionPack.getRelatedProductPackList().contains(pack)) {
                         continue;
-                    }else{
+                    } else {
                         promotionPack.getRelatedProductPackList().add(pack);
                     }
-                }else{
-                    BeanUtils.copyProperties(promotion,promotionPack);
+                } else {
+                    BeanUtils.copyProperties(promotion, promotionPack);
                     promotionPack.setRelatedProductPackList(ListUtil.toList(pack));
                     promotionPackList.add(promotionPack);
                 }

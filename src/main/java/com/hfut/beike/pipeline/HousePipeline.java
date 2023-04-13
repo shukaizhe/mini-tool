@@ -10,8 +10,6 @@ import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 
-import java.util.Map;
-
 @Component
 @Slf4j
 public class HousePipeline implements Pipeline {
