@@ -5,6 +5,7 @@ import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceStepVO;
 import com.hfut.beike.entity.vo.ProductPackVO;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,11 +17,9 @@ import java.text.MessageFormat;
 /**
  * 步骤日志生成组件
  */
+@Slf4j
 @LiteflowComponent(value = CmpConstant.STEP_PRINT_CMP, id = CmpConstant.STEP_PRINT_CMP, name = "步骤日志生成组件")
 public class StepPrintCmp extends CustomNodeComponent<PriceContext> {
-
-    private Logger log = LoggerFactory.getLogger(getClass());
-
     @Override
     public void process() throws Exception {
         PriceContext context = getContext();

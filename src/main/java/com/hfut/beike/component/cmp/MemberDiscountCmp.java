@@ -5,6 +5,7 @@ import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceStepVO;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,6 +15,7 @@ import java.math.RoundingMode;
 /**
  * 会员折扣计算组件
  */
+@Slf4j
 @LiteflowComponent(value = CmpConstant.MEMBER_DISCOUNT_CMP, id = CmpConstant.MEMBER_DISCOUNT_CMP, name = "会员折扣计算组件")
 public class MemberDiscountCmp extends CustomNodeComponent<PriceContext> {
     @Override
@@ -21,7 +23,7 @@ public class MemberDiscountCmp extends CustomNodeComponent<PriceContext> {
         PriceContext context = getContext();
         String memberCode = context.getMemberCode();
 
-        /***这里Mock下通过memberCode去查会员等级表然后获取的会员折扣为9折的代码***/
+        // 这里Mock下通过memberCode去查会员等级表然后获取的会员折扣为9折的代码
         BigDecimal memberDiscount = new BigDecimal("0.9");
 
         //进行计算会员折扣

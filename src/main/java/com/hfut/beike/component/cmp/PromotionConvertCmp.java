@@ -7,6 +7,7 @@ import com.hfut.beike.entity.vo.ProductPackVO;
 import com.hfut.beike.entity.vo.PromotionInfoVO;
 import com.hfut.beike.entity.vo.PromotionPackVO;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 
@@ -16,6 +17,7 @@ import java.util.List;
 /**
  * 把商品包的优惠信息转换成以优惠信息为主要维度的对象，以便于后面优惠信息的计算
  */
+@Slf4j
 @LiteflowComponent(value = CmpConstant.PROMOTION_CONVERT_CMP, id = CmpConstant.PROMOTION_CONVERT_CMP, name = "把商品包的优惠信息转换成以优惠信息为主要维度的对象，以便于后面优惠信息的计算")
 public class PromotionConvertCmp extends CustomNodeComponent<PriceContext> {
     @Override
@@ -23,7 +25,7 @@ public class PromotionConvertCmp extends CustomNodeComponent<PriceContext> {
         PriceContext context = getContext();
         List<PromotionPackVO> promotionPackList = new ArrayList<>();
 
-        PromotionPackVO promotionPack = null;
+        PromotionPackVO promotionPack;
         for(ProductPackVO pack : context.getProductPackList()){
             if(CollectionUtils.isEmpty(pack.getPromotionList())){
                 continue;

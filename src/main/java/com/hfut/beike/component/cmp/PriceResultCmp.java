@@ -4,6 +4,7 @@ import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceStepVO;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.math.BigDecimal;
@@ -11,6 +12,8 @@ import java.math.BigDecimal;
 /**
  * 订单最终价格计算器
  */
+
+@Slf4j
 @LiteflowComponent(value = CmpConstant.PRICE_RESULT_CMP, id = CmpConstant.PRICE_RESULT_CMP, name = "订单最终价格计算器")
 public class PriceResultCmp extends CustomNodeComponent<PriceContext> {
     @Override

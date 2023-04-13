@@ -2,6 +2,7 @@ package com.hfut.beike.component.cmp;
 
 import com.hfut.beike.component.slot.Context;
 import com.yomahub.liteflow.core.NodeComponent;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,10 +15,8 @@ import java.lang.reflect.Type;
  * @Date 2023/2/14 13:59
  * @Created by shukz
  */
+@Slf4j
 public abstract class CustomNodeComponent<C extends Context> extends NodeComponent {
-
-    private final Logger log = LoggerFactory.getLogger(getClass());
-
     protected C getContext() {
         return this.getContextBean(getContextClazz());
     }

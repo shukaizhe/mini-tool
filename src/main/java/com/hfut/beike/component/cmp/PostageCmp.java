@@ -5,19 +5,21 @@ import com.hfut.beike.component.cmp.constant.CmpConstant;
 import com.hfut.beike.component.slot.PriceContext;
 import com.hfut.beike.entity.vo.PriceStepVO;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
+import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 
 /**
  * 国内运费计算组件
  */
+@Slf4j
 @LiteflowComponent(value = CmpConstant.POSTAGE_CMP, id = CmpConstant.POSTAGE_CMP, name = "国内运费计算组件")
 public class PostageCmp extends CustomNodeComponent<PriceContext> {
     @Override
     public void process() throws Exception {
         PriceContext context = getContext();
 
-        /**这里Mock运费的策略是：满99免运费，不满99需要10块钱运费**/
+        // 这里Mock运费的策略是：满99免运费，不满99需要10块钱运费
         BigDecimal triggerPrice = new BigDecimal(99);
         BigDecimal postage = new BigDecimal(10);
         //先把运费加上去

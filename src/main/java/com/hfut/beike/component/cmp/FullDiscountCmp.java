@@ -8,6 +8,7 @@ import com.hfut.beike.entity.vo.PriceStepVO;
 import com.hfut.beike.entity.vo.ProductPackVO;
 import com.hfut.beike.entity.vo.PromotionPackVO;
 import com.yomahub.liteflow.annotation.LiteflowComponent;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.math.BigDecimal;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 /**
  * 满折计算组件
  */
+@Slf4j
 @LiteflowComponent(value = CmpConstant.FULL_DISCOUNT_CMP, id = CmpConstant.FULL_DISCOUNT_CMP, name = "满折计算组件")
 public class FullDiscountCmp extends CustomNodeComponent<PriceContext> {
     @Override

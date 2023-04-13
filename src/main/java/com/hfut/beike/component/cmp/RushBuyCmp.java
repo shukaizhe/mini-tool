@@ -35,6 +35,7 @@ public class RushBuyCmp extends CustomNodeComponent<PriceContext> {
 
         BigDecimal prePrice = context.getLastestPriceStep().getCurrPrice();
         BigDecimal rushBuyDiscountPrice = new BigDecimal(0);
+        assert promotionPack != null;
         for(ProductPackVO productPack : promotionPack.getRelatedProductPackList()){
             rushBuyDiscountPrice = rushBuyDiscountPrice.add(productPack.getSalePrice().subtract(rushBuyPrice)
                     .multiply(new BigDecimal(productPack.getCount()))).setScale(2, RoundingMode.HALF_UP);
@@ -60,9 +61,7 @@ public class RushBuyCmp extends CustomNodeComponent<PriceContext> {
     private PromotionPackVO getMatchPromotion(){
         PriceContext context = this.getContextBean(PriceContext.class);
 
-        List<PromotionPackVO> matchList = context.getPromotionPackList().stream().filter(promotionPackVO -> {
-            return promotionPackVO.getPromotionType().equals(PromotionTypeEnum.RUSH_BUY);
-        }).collect(Collectors.toList());
+        List<PromotionPackVO> matchList = context.getPromotionPackList().stream().filter(promotionPackVO -> promotionPackVO.getPromotionType().equals(PromotionTypeEnum.RUSH_BUY)).collect(Collectors.toList());
 
         if(CollectionUtils.isNotEmpty(matchList)){
             return matchList.get(0);

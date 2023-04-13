@@ -24,12 +24,13 @@ public class FullCutCmp extends CustomNodeComponent<PriceContext> {
         PriceContext slot = getContext();
         PromotionPackVO promotionPack = getMatchPromotion();
 
-        /***这里Mock下根据优惠信息查到的满减信息为：满100，减5块***/
+        // 这里Mock下根据优惠信息查到的满减信息为：满100，减5块
         BigDecimal triggerPrice = new BigDecimal(100);
         BigDecimal cutPrice = new BigDecimal(5);
 
         //从PromotionPack对象中取到这个优惠关联的商品信息，判断是否超过了触发满减的金额
         BigDecimal reletedProductTotalPrice = new BigDecimal(0);
+        assert promotionPack != null;
         for (ProductPackVO productPack : promotionPack.getRelatedProductPackList()) {
             reletedProductTotalPrice = reletedProductTotalPrice.add(productPack.getSalePrice().multiply(new BigDecimal(productPack.getCount())));
         }
